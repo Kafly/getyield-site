@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Yield</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #050505;
+      --surface: #0c0c0c;
+      --card: #111;
+      --gold: #C9A227;
+      --gold-border: rgba(201, 162, 39, 0.12);
+      --green: #00E87A;
+      --text: #F2F0EB;
+      --text2: rgba(255, 255, 255, 0.55);
+      --text3: rgba(255, 255, 255, 0.25);
+      --border: rgba(255, 255, 255, 0.05);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: rgba(201, 162, 39, 0.3);
+      color: #fff;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(5, 5, 5, 0.9);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 26px;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+
+    .nav-back {
+      color: var(--text3);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover {
+      color: var(--text);
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .page-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 1px;
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      margin-top: 48px;
+      margin-bottom: 16px;
+      color: var(--gold);
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    ul {
+      margin: 0 0 16px 20px;
+      color: var(--text2);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    .highlight-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+
+    .highlight-box.green {
+      border-color: rgba(0, 232, 122, 0.15);
+      background: rgba(0, 232, 122, 0.03);
+    }
+
+    .highlight-box.gold {
+      border-color: var(--gold-border);
+      background: rgba(201, 162, 39, 0.03);
+    }
+
+    .highlight-box p {
+      margin-bottom: 0;
+    }
+
+    .footer-simple {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 11px;
+      color: var(--text3);
+      border-top: 1px solid var(--border);
+      margin-top: 64px;
+    }
+
+    @media(max-width:768px) {
+      nav {
+        padding: 0 20px;
+      }
+
+      .content {
+        padding: 100px 20px 60px;
+      }
+
+      .page-title {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">yield</a>
+    <a href="/" class="nav-back">← Back to Home</a>
+  </nav>
+
+  <div class="content">
+
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="page-meta">Last updated: March 2026</p>
+
+    <p>Yield ("we," "our," or "us") is committed to protecting your privacy. This policy explains what data we collect,
+      how we use it, and the choices you have.</p>
+
+    <div class="highlight-box green">
+      <p><strong>The short version:</strong> We collect only what's needed to track your card benefits. We never store
+        card numbers, CVV, or bank credentials. We never sell your personal data. You can delete everything at any time.
+      </p>
+    </div>
+
+    <h2>What We Collect</h2>
+
+    <h3>Account Information</h3>
+    <ul>
+      <li><strong>Name and email address</strong> — for account creation and login</li>
+      <li><strong>Authentication method</strong> — email/password or Apple Sign-In</li>
+    </ul>
+
+    <h3>Card & Benefit Data</h3>
+    <ul>
+      <li><strong>Card product names</strong> — which credit card products you hold (e.g., "Amex Platinum," "Chase
+        Sapphire Reserve"). We identify cards by product name only.</li>
+      <li><strong>Benefit usage</strong> — how much of each credit you've used in the current period (e.g., "$85 of $100
+        Resy dining credit used")</li>
+    </ul>
+
+    <h3>Transaction Data (via Plaid)</h3>
+    <p>If you choose to link your bank account, we use Plaid to access:</p>
+    <ul>
+      <li><strong>Transaction history</strong> — merchant name, amount, date, and category. Used to auto-detect benefit
+        usage (e.g., detecting a Resy charge to mark your dining credit as used).</li>
+      <li><strong>Account details</strong> — account type and name, used to identify which credit cards you hold.</li>
+    </ul>
+    <p>Plaid's own privacy policy governs how Plaid handles your data: <a
+        href="https://plaid.com/legal/#end-user-privacy-policy" style="color:var(--gold);">plaid.com/legal</a></p>
+
+    <h3>Device Data</h3>
+    <ul>
+      <li><strong>Push notification token</strong> — for sending benefit expiration alerts</li>
+      <li><strong>Device platform</strong> — iOS (used for app functionality)</li>
+    </ul>
+
+    <h3>Anonymous Analytics</h3>
+    <ul>
+      <li><strong>Usage events</strong> — feature usage, agent task types, benefit categories. These are linked to a
+        one-way hashed anonymous ID that cannot be reversed to identify you.</li>
+    </ul>
+
+    <div class="highlight-box gold">
+      <p><strong>What we NEVER collect:</strong></p>
+      <ul style="margin-bottom:0;">
+        <li>Credit card numbers (full or partial)</li>
+        <li>CVV or security codes</li>
+        <li>Card expiration dates</li>
+        <li>Bank account numbers or routing numbers</li>
+        <li>Social Security numbers</li>
+        <li>Bank login credentials (Plaid handles authentication securely)</li>
+        <li>Location data</li>
+        <li>Contacts, photos, or browsing history</li>
+      </ul>
+    </div>
+
+    <h2>How We Use Your Data</h2>
+
+    <ul>
+      <li><strong>Benefit tracking</strong> — match transactions to card benefits, calculate recovery rates, and track
+        expiration dates</li>
+      <li><strong>Expiration alerts</strong> — send push notifications when benefits are about to expire (14, 7, 3, and
+        1 day warnings)</li>
+      <li><strong>Agent actions</strong> — search for restaurants, find gift card options, optimize subscriptions, and
+        generate retention scripts based on your card data</li>
+      <li><strong>Offer scanning</strong> — surface relevant offers from your card issuers</li>
+      <li><strong>Product improvement</strong> — anonymous analytics help us understand which features are used and
+        improve the app</li>
+    </ul>
+
+    <h2>How We Protect Your Data</h2>
+
+    <ul>
+      <li><strong>Encryption in transit</strong> — all data transmitted using TLS 1.2+</li>
+      <li><strong>Encryption at rest</strong> — all stored data encrypted using AES-256 via our infrastructure provider
+        (Supabase)</li>
+      <li><strong>Access controls</strong> — row-level security ensures users can only access their own data</li>
+      <li><strong>Biometric protection</strong> — Face ID or Touch ID required for all financial agent actions</li>
+      <li><strong>No raw credentials</strong> — bank authentication handled entirely by Plaid's secure infrastructure
+      </li>
+      <li><strong>Audit logging</strong> — every agent action logged with timestamp for transparency</li>
+    </ul>
+
+    <h2>Data Sharing</h2>
+
+    <p>We do not sell your personal information. We share data only with:</p>
+    <ul>
+      <li><strong>Plaid</strong> — to access your bank transaction data (with your explicit consent via Plaid Link)</li>
+      <li><strong>Supabase</strong> — our infrastructure provider that hosts and encrypts your data</li>
+      <li><strong>Expo</strong> — for push notification delivery</li>
+    </ul>
+    <p>We do not share your data with advertisers, data brokers, or any third parties for marketing purposes.</p>
+
+    <h2>Data Retention</h2>
+
+    <ul>
+      <li><strong>Benefit usage history</strong> — retained for the lifetime of your account (needed for streak tracking
+        and recovery history)</li>
+      <li><strong>Transaction data</strong> — retained for the lifetime of your account (needed for benefit matching)
+      </li>
+      <li><strong>Anonymous analytics</strong> — retained indefinitely (cannot be linked to your identity)</li>
+    </ul>
+
+    <h2>Your Rights & Choices</h2>
+
+    <h3>Account Deletion</h3>
+    <p>You can delete your account at any time from Settings → Delete Account. This permanently removes:</p>
+    <ul>
+      <li>Your profile (name, email)</li>
+      <li>All linked cards and benefit data</li>
+      <li>All transaction data</li>
+      <li>All agent task history</li>
+      <li>All notification preferences and tokens</li>
+      <li>Your authentication account</li>
+    </ul>
+    <p>Anonymous analytics data (which cannot be linked to you) is retained after deletion.</p>
+
+    <h3>Bank Connection</h3>
+    <p>You can disconnect your bank at any time. You can also use Yield without linking a bank by adding cards manually
+      — transaction-based features will be unavailable, but benefit tracking still works.</p>
+
+    <h3>Notifications</h3>
+    <p>You can disable push notifications at any time via your iPhone's Settings.</p>
+
+    <h2>Children's Privacy</h2>
+    <p>Yield is not intended for users under 18. We do not knowingly collect personal information from children.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We may update this policy from time to time. We will notify you of significant changes via the app or email. The
+      "Last updated" date at the top of this page reflects the most recent revision.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this policy or your data?</p>
+    <p>Email: <a href="mailto:privacy@getyield.io" style="color:var(--gold);">privacy@getyield.io</a></p>
+    <p>Or reach us at: <a href="mailto:nobert@getyield.io" style="color:var(--gold);">ben@getyield.io</a></p>
+
+  </div>
+
+  <div class="footer-simple">
+    <span
+      style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:16px;">yield</span>
+    &nbsp;·&nbsp; © 2026 Yield. All rights reserved.
+    &nbsp;·&nbsp; <a href="/" style="color:var(--text3);text-decoration:none;">Home</a>
+  </div>
+
+</body>
+
+</html>
