@@ -8,9 +8,30 @@
     body { background:#0A0A0A; color:#F2F0EB; font-family:-apple-system,sans-serif; display:flex; align-items:center; justify-content:center; min-height:100vh; margin:0; text-align:center; }
     h1 { color:#C9A227; font-size:24px; margin-bottom:8px; }
     p { color:rgba(255,255,255,0.5); font-size:14px; }
+    a { color:#C9A227; font-size:16px; margin-top:20px; display:inline-block; }
   </style>
 </head>
 <body>
-  <div><h1>yield</h1><p>Connecting your cards...</p><p>You'll be redirected back to the app automatically.</p></div>
+  <div>
+    <h1>yield</h1>
+    <p>Connecting your cards...</p>
+    <p id="status">Redirecting back to the app...</p>
+    <a id="manual-link" style="display:none" href="#">Tap here to return to Yield</a>
+  </div>
+  <script>
+    // Pass the full URL (with Plaid's OAuth params) back to the app
+    var appUrl = 'yield://plaid-oauth' + window.location.search;
+    
+    // Try to redirect automatically
+    window.location.href = appUrl;
+    
+    // If auto-redirect fails, show manual link after 2 seconds
+    setTimeout(function() {
+      document.getElementById('status').textContent = 'If you weren\'t redirected automatically:';
+      var link = document.getElementById('manual-link');
+      link.href = appUrl;
+      link.style.display = 'inline-block';
+    }, 2000);
+  </script>
 </body>
 </html>
