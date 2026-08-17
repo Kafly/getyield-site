@@ -1,562 +1,633 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yield — Recover Every Dollar From Your Card Fees</title>
-<meta name="description" content="Yield helps premium credit card holders recover unused benefits before they expire. AI agents track, alert, and act on your behalf.">
-<meta property="og:title" content="Yield — Recover Every Dollar">
-<meta property="og:description" content="Stop leaving money on the table. AI-powered benefit recovery for premium cardholders.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yield · fights for your money</title>
+<meta name="description" content="Your card credits expire quietly. Your bills climb without a notice. The price of what you just bought falls a week later. Yield watches all of it and hands you the move while it still pays.">
+<meta name="theme-color" content="#0B0908">
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/assets/yield-icon.png">
+<meta property="og:title" content="Yield · fights for your money">
+<meta property="og:description" content="Card credits, refund windows, creeping bills and the wrong card at checkout. Yield watches all of it and hands you the move while it still pays.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://getyield.io">
-<link rel="icon" type="image/png" href="/favicon.png">
+<meta property="og:image" content="https://getyield.io/assets/yield-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Schibsted+Grotesk:wght@400..800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.className="js"</script>
+<link rel="stylesheet" href="/assets/yield.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap');
-
-*{margin:0;padding:0;box-sizing:border-box;}
-
-:root{
---bg:#050505;--surface:#0c0c0c;--card:#111111;--card-h:#181818;
---gold:#C9A227;--gold-l:#E8D068;--gold-d:#8A6A10;
---gold-bg:rgba(201,162,39,0.06);--gold-border:rgba(201,162,39,0.12);
---green:#00E87A;--green-bg:rgba(0,232,122,0.08);
---red:#FF4D4D;--red-bg:rgba(255,77,77,0.08);
---text:#F2F0EB;--text2:rgba(255,255,255,0.5);--text3:rgba(255,255,255,0.25);
---border:rgba(255,255,255,0.05);
+/* ── homepage composition ───────────────────────────────────── */
+header{padding:118px 0 88px;position:relative;overflow:hidden}
+.halo{position:absolute;width:1080px;height:1080px;right:-300px;top:-320px;
+  background:radial-gradient(circle,rgba(201,162,39,.14),transparent 60%);pointer-events:none}
+.halo2{position:absolute;width:760px;height:760px;left:-360px;bottom:-420px;
+  background:radial-gradient(circle,rgba(201,162,39,.06),transparent 64%);pointer-events:none}
+.hero{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(28px,5vw,68px);
+  align-items:center;position:relative}
+.hero h1{font-size:clamp(42px,5.9vw,76px)}
+.hero .lede{font-size:20px;color:var(--grey);max-width:47ch;margin-top:24px;line-height:1.6}
+.hero .lede b{color:var(--bone);font-weight:600}
+.tagline{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--hair);
+  padding:7px 15px;border-radius:999px;margin-bottom:26px;background:rgba(201,162,39,.07)}
+.tagline .dot{width:6px;height:6px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 10px var(--green);animation:pulse 2.6s var(--ease-soft) infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+.tagline span{font-family:var(--mono);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--gold-l);font-weight:500}
+.trust-strip{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--hair-n)}
+.trust-strip div{font-size:13px;color:var(--muted);max-width:20ch;line-height:1.45}
+.trust-strip b{color:var(--gold-l);font-weight:600;display:block;font-size:13.5px;margin-bottom:2px}
+@media(max-width:960px){.hero{grid-template-columns:1fr}header{padding:104px 0 60px}}
+@media(max-width:560px){
+  .tagline .seg{display:none}
+  .tagline span{font-size:9px;letter-spacing:.12em}
+  .trust-strip{gap:18px}
+  .trust-strip div{max-width:none;flex:1 1 100%}
 }
 
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+/* Section level colour, used semantically and sparingly: red where money
+   is leaving, green where it has landed, gold for the brand close. */
+#problem{background:radial-gradient(ellipse 70% 45% at 50% 0%,rgba(255,77,77,.055),transparent 68%)}
+#trust{background:radial-gradient(ellipse 70% 45% at 50% 0%,rgba(0,232,122,.05),transparent 68%)}
+#all{background:radial-gradient(ellipse 80% 40% at 50% 0%,rgba(201,162,39,.055),transparent 70%)}
 
-/* ─── SELECTION ─── */
-::selection{background:rgba(201,162,39,0.3);color:#fff;}
+.leak-list > div{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;
+  padding:18px 0;border-bottom:1px solid var(--hair-n)}
+.leak-list .w{font-size:16.5px;color:var(--grey);line-height:1.45}
+.leak-list .w b{color:var(--bone);font-weight:600}
+.leak-total{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
+  flex-wrap:wrap;padding-top:26px}
 
-/* ─── SCROLLBAR ─── */
-::-webkit-scrollbar{width:5px;}
-::-webkit-scrollbar-track{background:transparent;}
-::-webkit-scrollbar-thumb{background:rgba(201,162,39,0.2);border-radius:3px;}
+.why-col{padding:26px 0;border-top:1px solid var(--hair)}
+.why-col .n{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--gold);margin-bottom:14px}
+.why-col h4{margin-bottom:10px}
+.why-col p{color:var(--grey);font-size:15.5px;line-height:1.55}
 
-/* ─── GRAIN OVERLAY ─── */
-body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");}
+.step-card{position:relative;overflow:hidden}
+.step-card .num{display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:10px;margin-bottom:16px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--gold-l);
+  background:linear-gradient(165deg,rgba(201,162,39,.18),rgba(201,162,39,.05));
+  border:1px solid var(--hair);box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
+.step-card .glow{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle 130px at 88% -6%,rgba(201,162,39,.11),transparent 70%)}
+.step-card h4{margin-bottom:10px;position:relative}
+.step-card p{color:var(--grey);font-size:15.5px;position:relative}
 
-/* ─── NAVIGATION ─── */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,5,5,0.85);backdrop-filter:blur(24px) saturate(1.2);border-bottom:1px solid var(--border);transition:all 0.3s;}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:26px;color:var(--gold);letter-spacing:0.5px;text-decoration:none;}
-.nav-center{display:flex;gap:36px;}
-.nav-center a{color:var(--text3);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.3px;transition:color 0.2s;position:relative;}
-.nav-center a:hover{color:var(--text);}
-.nav-center a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s;}
-.nav-center a:hover::after{width:100%;}
-.nav-cta{background:transparent;color:var(--gold);padding:8px 20px;border-radius:6px;font-weight:600;font-size:12px;text-decoration:none;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--gold-border);transition:all 0.2s;font-family:'Space Mono',monospace;}
-.nav-cta:hover{background:var(--gold);color:#000;border-color:var(--gold);}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,84px);align-items:center;
+  padding:clamp(58px,7vw,96px) 0;border-top:1px solid var(--hair-n)}
+.feat.rev .txt{order:2}
+.feat .txt .lab{display:block;margin-bottom:16px}
+.feat .txt p{color:var(--grey);font-size:17.5px;margin-top:18px;max-width:45ch;line-height:1.6}
+.feat .note{margin-top:26px;padding:14px 18px;border-radius:var(--r-sm);
+  background:rgba(201,162,39,.05);border:1px solid var(--hair);font-size:14px;color:var(--grey)}
+.feat .note b{color:var(--gold-l);font-weight:600}
+@media(max-width:960px){.feat{grid-template-columns:1fr}.feat.rev .txt{order:0}}
 
-/* ─── HERO ─── */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 48px 80px;position:relative;}
-.hero-glow{position:absolute;top:20%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(ellipse,rgba(201,162,39,0.04) 0%,transparent 65%);pointer-events:none;}
-.hero-glow-2{position:absolute;top:60%;right:10%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,232,122,0.02) 0%,transparent 70%);pointer-events:none;}
-.hero-content{max-width:800px;position:relative;z-index:1;text-align:center;}
+.day{display:grid;grid-template-columns:100px 1fr;max-width:840px;margin:0 auto}
+.day-time{font-family:var(--mono);font-size:11px;letter-spacing:.13em;color:var(--gold);
+  padding:22px 0;text-transform:uppercase}
+.day-item{padding:22px 0 22px 28px;border-left:1px solid var(--hair-n);position:relative}
+.day-item::before{content:"";position:absolute;left:-4.5px;top:29px;width:8px;height:8px;
+  border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--ground)}
+.day-item.q::before{background:var(--faint)}
+.day-item.g::before{background:var(--green);box-shadow:0 0 0 4px var(--ground),0 0 12px var(--green)}
+.day-item h4{font-size:17px;margin-bottom:5px}
+.day-item p{color:var(--muted);font-size:14.5px}
+@media(max-width:620px){.day{grid-template-columns:72px 1fr}}
 
-.hero-eyebrow{font-family:'Space Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:28px;opacity:0;animation:fadeUp 0.8s ease forwards;animation-delay:0.2s;}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:700;line-height:1.05;margin-bottom:28px;opacity:0;animation:fadeUp 0.8s ease forwards;animation-delay:0.4s;}
-.hero h1 .gold{color:var(--gold);}
-.hero h1 .italic{font-style:italic;}
-.hero-body{font-size:18px;color:var(--text2);line-height:1.75;max-width:560px;margin:0 auto 44px;opacity:0;animation:fadeUp 0.8s ease forwards;animation-delay:0.6s;}
-.hero-actions{display:flex;gap:16px;justify-content:center;opacity:0;animation:fadeUp 0.8s ease forwards;animation-delay:0.8s;}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#050505;padding:15px 36px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;letter-spacing:0.3px;transition:all 0.2s;box-shadow:0 0 0 0 rgba(201,162,39,0);border:none;cursor:pointer;}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,162,39,0.2);}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text2);padding:15px 36px;border-radius:10px;font-weight:500;font-size:14px;text-decoration:none;border:1px solid var(--border);transition:all 0.2s;cursor:pointer;}
-.btn-secondary:hover{border-color:rgba(255,255,255,0.15);color:var(--text);}
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:16px}
 
-.hero-note{font-size:12px;color:var(--text3);margin-top:20px;opacity:0;animation:fadeUp 0.8s ease forwards;animation-delay:1s;}
+.not-grid{grid-template-columns:repeat(2,1fr)}
+@media(max-width:820px){.not-grid{grid-template-columns:1fr}}
+.faq{max-width:860px;margin:0 auto}
+details{border-bottom:1px solid var(--hair-n)}
+details summary{cursor:pointer;list-style:none;padding:22px 0;display:flex;justify-content:space-between;
+  align-items:center;gap:20px;font-size:18px;font-weight:600;color:var(--bone);transition:color .22s}
+details summary::-webkit-details-marker{display:none}
+details summary:hover{color:var(--gold-l)}
+details summary .plus{font-family:var(--mono);color:var(--gold);flex:none;
+  transition:transform .35s var(--ease)}
+details[open] summary .plus{transform:rotate(45deg)}
+details .ans{padding:0 0 24px;color:var(--grey);font-size:16px;max-width:74ch;line-height:1.65}
 
-/* ─── SOCIAL PROOF BAR ─── */
-.proof{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:36px 48px;display:flex;justify-content:center;gap:72px;overflow:hidden;}
-.proof-item{text-align:center;flex-shrink:0;}
-.proof-value{font-family:'DM Sans',sans-serif;font-size:32px;font-weight:700;color:var(--gold);}
-.proof-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
-
-/* ─── PROBLEM ─── */
-.problem{max-width:900px;margin:0 auto;padding:100px 48px;text-align:center;}
-.section-eyebrow{font-family:'Space Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:700;line-height:1.15;margin-bottom:20px;}
-.section-body{font-size:17px;color:var(--text2);line-height:1.75;max-width:640px;margin:0 auto;}
-
-.problem-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;}
-.problem-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px 24px;text-align:left;transition:border-color 0.3s;}
-.problem-card:hover{border-color:var(--gold-border);}
-.problem-icon{font-size:32px;margin-bottom:16px;}
-.problem-stat{font-size:28px;font-weight:700;color:var(--gold);margin-bottom:4px;}
-.problem-desc{font-size:13px;color:var(--text2);line-height:1.6;}
-
-/* ─── FEATURES ─── */
-.features{max-width:1100px;margin:0 auto;padding:100px 48px;}
-.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px;}
-.feature-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden;transition:all 0.3s;}
-.feature-card:hover{border-color:var(--gold-border);transform:translateY(-2px);}
-.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),transparent);opacity:0;transition:opacity 0.3s;}
-.feature-card:hover::before{opacity:1;}
-.feature-emoji{font-size:36px;margin-bottom:20px;display:block;}
-.feature-name{font-weight:700;font-size:18px;margin-bottom:8px;}
-.feature-desc{font-size:14px;color:var(--text2);line-height:1.7;}
-.feature-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;color:var(--green);background:var(--green-bg);padding:4px 10px;border-radius:4px;margin-top:14px;letter-spacing:1px;text-transform:uppercase;}
-.feature-featured{grid-column:1 / -1;border-color:var(--gold-border);background:linear-gradient(135deg,var(--card) 0%,rgba(201,162,39,0.03) 100%);}
-.feature-example{font-family:'Space Mono',monospace;font-size:12px;color:var(--text2);background:var(--surface);border-radius:8px;padding:16px;margin-top:16px;line-height:1.6;}
-
-/* ─── HOW IT WORKS ─── */
-.how{max-width:800px;margin:0 auto;padding:100px 48px;}
-.how-steps{margin-top:56px;position:relative;}
-.how-line{position:absolute;left:23px;top:48px;bottom:48px;width:1px;background:linear-gradient(180deg,var(--gold),var(--gold-d),transparent);}
-.how-step{display:flex;gap:28px;margin-bottom:48px;position:relative;}
-.how-step:last-child{margin-bottom:0;}
-.step-dot{width:48px;height:48px;border-radius:50%;background:var(--gold-bg);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Space Mono',monospace;font-size:13px;color:var(--gold);font-weight:700;position:relative;z-index:1;}
-.step-content{padding-top:10px;}
-.step-content h3{font-size:18px;font-weight:700;margin-bottom:6px;}
-.step-content p{font-size:14px;color:var(--text2);line-height:1.7;}
-
-/* ─── AGENT SHOWCASE ─── */
-.agents{padding:100px 48px;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.agents-inner{max-width:1100px;margin:0 auto;}
-.agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;}
-.agent-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color 0.3s;}
-.agent-card:hover{border-color:var(--gold-border);}
-.agent-header{padding:12px 16px;border-bottom:1px solid var(--border);background:var(--gold-bg);font-family:'Space Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
-.agent-body{padding:20px 16px;}
-.agent-title{font-weight:700;font-size:15px;margin-bottom:6px;}
-.agent-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:12px;}
-.agent-example{background:var(--bg);border-radius:8px;padding:10px 12px;font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);line-height:1.6;}
-.agent-example .highlight{color:var(--green);}
-
-/* ─── TRUST ─── */
-.trust{max-width:900px;margin:0 auto;padding:100px 48px;text-align:center;}
-.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px;}
-.trust-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px 16px;text-align:center;}
-.trust-icon{font-size:28px;margin-bottom:12px;}
-.trust-name{font-weight:700;font-size:13px;margin-bottom:4px;}
-.trust-desc{font-size:11px;color:var(--text3);line-height:1.5;}
-
-/* ─── CARDS SUPPORTED ─── */
-.cards-section{max-width:1100px;margin:0 auto;padding:100px 48px;text-align:center;}
-.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:48px auto 0;text-align:left;}
-.issuer-name{font-family:'Space Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
-.issuer-cards{list-style:none;padding:0;}
-.issuer-cards li{font-size:14px;color:var(--text2);padding:4px 0;padding-left:12px;position:relative;}
-.issuer-cards li::before{content:'·';position:absolute;left:0;color:var(--gold);}
-
-/* ─── CTA ─── */
-.cta{padding:100px 48px;text-align:center;position:relative;}
-.cta::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(201,162,39,0.04) 0%,transparent 70%);pointer-events:none;}
-.cta-inner{position:relative;z-index:1;}
-.cta h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;margin-bottom:16px;}
-.cta p{font-size:16px;color:var(--text2);margin-bottom:36px;}
-
-/* ─── FOOTER ─── */
-footer{border-top:1px solid var(--border);padding:48px;display:flex;justify-content:space-between;align-items:flex-start;max-width:1100px;margin:0 auto;}
-.footer-brand .nav-logo{font-size:22px;}
-.footer-tag{font-family:'Space Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-top:6px;}
-.footer-links{display:flex;gap:48px;}
-.footer-col h4{font-family:'Space Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
-.footer-col a{display:block;color:var(--text2);text-decoration:none;font-size:13px;margin-bottom:8px;transition:color 0.2s;}
-.footer-col a:hover{color:var(--text);}
-.footer-bottom{text-align:center;padding:20px 48px;font-size:11px;color:var(--text3);border-top:1px solid var(--border);}
-
-/* ─── ANIMATIONS ─── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-
-.reveal{opacity:0;transform:translateY(30px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1);}
-.reveal.visible{opacity:1;transform:translateY(0);}
-
-/* ─── RESPONSIVE ─── */
-@media(max-width:900px){
-  nav{padding:0 20px;}
-  .nav-center{display:none;}
-  .hero{padding:100px 20px 60px;}
-  .hero h1{font-size:44px;}
-  .proof{flex-wrap:wrap;gap:32px;padding:28px 20px;}
-  .problem,.features,.how,.agents,.trust,.cta,.cards-section{padding-left:20px;padding-right:20px;}
-  .problem-cards{grid-template-columns:1fr;}
-  .feature-grid{grid-template-columns:1fr;}
-  .agent-grid{grid-template-columns:1fr;}
-  .trust-grid{grid-template-columns:repeat(2,1fr);}
-  .cards-grid{grid-template-columns:repeat(2,1fr);}
-  .section-title{font-size:32px;}
-  .hero-actions{flex-direction:column;align-items:center;}
-  footer{flex-direction:column;gap:32px;padding:32px 20px;}
-  .footer-links{flex-direction:column;gap:24px;}
-}
-@media(max-width:480px){
-  .cards-grid{grid-template-columns:1fr;}
-}
+.purpose{text-align:center;background:radial-gradient(ellipse 62% 54% at 50% 36%,rgba(201,162,39,.13),transparent 70%)}
+.purpose h2{font-size:clamp(36px,5.8vw,78px);line-height:1.0;letter-spacing:-.038em}
+.purpose p{color:var(--grey);font-size:18.5px;max-width:58ch;margin:28px auto 0;line-height:1.65}
+.purpose .mark-lg{height:64px;width:auto;margin:0 auto 32px;
+  filter:drop-shadow(0 8px 26px rgba(201,162,39,.45))}
 </style>
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
 <nav>
-  <a href="/" class="nav-logo">yield</a>
-  <div class="nav-center">
-    <a href="#features">Features</a>
-    <a href="#agents">AI Agents</a>
-    <a href="#cards">Cards</a>
-    <a href="#how">How It Works</a>
-    <a href="#trust">Security</a>
+  <div class="nav-in">
+    <a href="/" class="mark" aria-label="Yield home">
+      <img src="/assets/yield-mark.png" alt="">
+      <span class="wm">yield</span>
+    </a>
+    <div class="nav-links">
+      <a href="#problem">The problem</a><a href="#work">The work</a><a href="#all">Everything</a>
+      <a href="#trust">Trust</a><a href="#not">Clarity</a><a href="#purpose">Purpose</a>
+    </div>
+    <a class="btn sm" href="#" onclick="soon(event)">Get the app</a>
   </div>
-  <a href="mailto:ben@getyield.io" class="nav-cta">Get Early Access</a>
 </nav>
 
-<!-- ─── HERO ─── -->
-<section class="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-glow-2"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Your Card · Your Return</div>
-    <h1>Stop Leaving <span class="gold italic">Money</span> on the Table</h1>
-    <p class="hero-body">You pay $895/yr for your Amex Platinum. Are you recovering all $3,100+ in benefits? Yield's AI agents track every credit, alert before expiration, and act on your behalf — so nothing goes to waste.</p>
-    <div class="hero-actions">
-      <a href="mailto:ben@getyield.io" class="btn-primary">Request Early Access →</a>
-      <a href="#how" class="btn-secondary">See How It Works</a>
-    </div>
-    <div class="hero-note">iOS · Coming 2026 · Free during beta</div>
-  </div>
-</section>
-
-<!-- ─── PROOF ─── -->
-<section class="proof">
-  <div class="proof-item">
-    <div class="proof-value">$3,100+</div>
-    <div class="proof-label">Avg benefits per premium card</div>
-  </div>
-  <div class="proof-item">
-    <div class="proof-value">68%</div>
-    <div class="proof-label">Left unused by cardholders</div>
-  </div>
-  <div class="proof-item">
-    <div class="proof-value">18</div>
-    <div class="proof-label">Premium cards tracked</div>
-  </div>
-  <div class="proof-item">
-    <div class="proof-value">6</div>
-    <div class="proof-label">Major issuers covered</div>
-  </div>
-</section>
-
-<!-- ─── PROBLEM ─── -->
-<section class="problem reveal">
-  <div class="section-eyebrow">The Problem</div>
-  <h2 class="section-title">Premium Cards, Wasted Benefits</h2>
-  <p class="section-body">You're paying for Resy dining credits, airline fee credits, Uber Cash, streaming credits, and membership enrollments. But keeping track of what expires when — across multiple cards — is nearly impossible.</p>
-
-  <div class="problem-cards">
-    <div class="problem-card">
-      <div class="problem-icon">💸</div>
-      <div class="problem-stat">$2,100</div>
-      <div class="problem-desc">Average amount left on the table per year by premium cardholders who don't fully use their benefits.</div>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">⏰</div>
-      <div class="problem-stat">37+</div>
-      <div class="problem-desc">Benefits to track across just two premium cards. Monthly resets, semi-annual windows, annual deadlines — all different.</div>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">🤷</div>
-      <div class="problem-stat">Zero</div>
-      <div class="problem-desc">Tools built specifically to solve this. Your issuer won't remind you — unused benefits are profit for them.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── FEATURES ─── -->
-<section class="features reveal" id="features">
-  <div class="section-eyebrow" style="text-align:center;">What Yield Does</div>
-  <h2 class="section-title" style="text-align:center;">Every Feature Earns Its Place</h2>
-  <p class="section-body" style="text-align:center;">Yield tracks, alerts, and acts — so you recover every dollar from cards you already pay for.</p>
-
-  <div class="feature-grid">
-    <div class="feature-card feature-featured">
-      <span class="feature-emoji">🎯</span>
-      <div class="feature-name">Points Maximizer</div>
-      <div class="feature-desc">Yield analyzes every transaction and tells you which card in your wallet earns the most points. Stop guessing. Stop leaving points on the table.</div>
-      <div class="feature-example">"You spent $120 at Whole Foods on Amex Platinum (1x).
-Your Amex Gold earns 4x. That's 360 points you missed."</div>
-      <div class="feature-tag">NEW</div>
-    </div>
-    <div class="feature-card">
-      <span class="feature-emoji">📊</span>
-      <div class="feature-name">Benefit Recovery Dashboard</div>
-      <div class="feature-desc">See exactly how much you've recovered vs. how much you're leaving behind. Per-card breakdown, recovery rate, and real-time tracking powered by your transaction data.</div>
-      <span class="feature-tag">Live Data</span>
-    </div>
-    <div class="feature-card">
-      <span class="feature-emoji">🔔</span>
-      <div class="feature-name">Smart Expiration Alerts</div>
-      <div class="feature-desc">Push notifications at 14, 7, 3, and 1 day before any benefit expires. Never lose a credit because you forgot a deadline.</div>
-      <span class="feature-tag">Automatic</span>
-    </div>
-    <div class="feature-card">
-      <span class="feature-emoji">🤖</span>
-      <div class="feature-name">AI Recovery Agents</div>
-      <div class="feature-desc">Agents that search for the best way to use expiring credits — restaurant bookings, gift card banking, subscription optimization — then execute with your approval.</div>
-      <span class="feature-tag">Face ID Protected</span>
-    </div>
-    <div class="feature-card">
-      <span class="feature-emoji">📡</span>
-      <div class="feature-name">Offer Radar</div>
-      <div class="feature-desc">Live scanner across all 6 major issuers. Surfaces Amex Offers, Chase deals, and more — filtered to your cards, ranked by value, with one-tap activation.</div>
-      <span class="feature-tag">Daily Scan</span>
-    </div>
-    <div class="feature-card">
-      <span class="feature-emoji">🛡</span>
-      <div class="feature-name">Trust Vault</div>
-      <div class="feature-desc">Full audit log of every agent action. Face ID on every transaction. Kill switch to pause all activity instantly. You're always in control.</div>
-      <span class="feature-tag">Zero Trust</span>
-    </div>
-    <div class="feature-card">
-      <span class="feature-emoji">📞</span>
-      <div class="feature-name">Retention Call Prep</div>
-      <div class="feature-desc">When your annual fee posts, Yield generates a personalized retention script with your spend data, ROI, and the issuer's phone number. Call ready in seconds.</div>
-      <span class="feature-tag">Data-Backed</span>
-    </div>
-  </div>
-</section>
-
-<!-- ─── HOW IT WORKS ─── -->
-<section class="how reveal" id="how">
-  <div class="section-eyebrow" style="text-align:center;">How It Works</div>
-  <h2 class="section-title" style="text-align:center;">Three Steps to Full Recovery</h2>
-
-  <div class="how-steps">
-    <div class="how-line"></div>
-    <div class="how-step">
-      <div class="step-dot">01</div>
-      <div class="step-content">
-        <h3>Connect Your Cards</h3>
-        <p>Link your bank securely or add cards manually. Yield detects your premium credit cards and loads all their benefits automatically. 18 cards across Amex, Chase, Citi, Capital One, Bank of America, and Wells Fargo.</p>
-      </div>
-    </div>
-    <div class="how-step">
-      <div class="step-dot">02</div>
-      <div class="step-content">
-        <h3>Yield Tracks Everything</h3>
-        <p>Transaction history syncs daily to auto-detect benefit usage. The dashboard shows exactly what you've used, what's expiring, and what's at risk — with a 91-day streak heatmap to keep you on track.</p>
-      </div>
-    </div>
-    <div class="how-step">
-      <div class="step-dot">03</div>
-      <div class="step-content">
-        <h3>Agents Recover For You</h3>
-        <p>AI agents find the best way to use expiring credits — book a restaurant, purchase a gift card, optimize subscriptions, prepare retention scripts — and execute with Face ID confirmation. You approve, they act.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── AGENT SHOWCASE ─── -->
-<section class="agents" id="agents">
-  <div class="agents-inner">
-    <div class="section-eyebrow" style="text-align:center;">AI-Powered</div>
-    <h2 class="section-title" style="text-align:center;">Agents That Actually Do Things</h2>
-    <p class="section-body" style="text-align:center;">Not chatbots. Not advice. Real actions on real benefits — with your permission.</p>
-
-    <div class="agent-grid">
-      <div class="agent-card">
-        <div class="agent-header">🍽 Dining Agent</div>
-        <div class="agent-body">
-          <div class="agent-title">Restaurant Booking</div>
-          <div class="agent-desc">Finds eligible Resy restaurants, checks availability for your preferred date, and books using your Amex dining credit.</div>
-          <div class="agent-example">✅ Found 3 restaurants<br>✅ Carbone, Fri 8pm<br><span class="highlight">→ Booked. $100 credit applied.</span></div>
+<!-- ══ HERO ══ -->
+<header>
+  <div class="halo"></div><div class="halo2"></div>
+  <div class="wrap">
+    <div class="hero">
+      <div class="rv">
+        <div class="tagline"><i class="dot"></i><span>7 items on watch · 3 windows open<span class="seg"> · 2 bills flagged</span></span></div>
+        <h1>Yield fights for your money.</h1>
+        <p class="lede">The price fell after you bought it. The credit expires Friday. The bill went up nineteen dollars and nobody sent a notice. <b>Yield sees all three, and hands you the move while it still pays.</b></p>
+        <div class="flexrow mt32">
+          <a class="btn" href="#" onclick="soon(event)">Get the app</a>
+          <a class="btn ghost" href="#work">Watch it work</a>
+        </div>
+        <div class="trust-strip">
+          <div><b>Read only</b>Yield never sees your login and cannot move money</div>
+          <div><b>18 cards</b>Across six issuers, every benefit on its own clock</div>
+          <div><b>Nothing sold</b>Not to advertisers, not to brokers</div>
         </div>
       </div>
-      <div class="agent-card">
-        <div class="agent-header">🎁 Banking Agent</div>
-        <div class="agent-body">
-          <div class="agent-title">Credit → Gift Card</div>
-          <div class="agent-desc">Converts expiring airline or retail credits into gift cards that never expire. Opens merchant checkout — you pay with your card, credit auto-applies.</div>
-          <div class="agent-example">⏰ $200 airline credit expires Dec 31<br><span class="highlight">→ Banked as Delta gift card. Never expires.</span></div>
-        </div>
-      </div>
-      <div class="agent-card">
-        <div class="agent-header">💰 Optimizer Agent</div>
-        <div class="agent-body">
-          <div class="agent-title">Subscription Savings</div>
-          <div class="agent-desc">Analyzes your cards and finds subscriptions you're paying for that could be free — DashPass, Lyft Pink, Instacart+, streaming bundles.</div>
-          <div class="agent-example">Found: Disney+ on wrong card<br><span class="highlight">→ Switch to Amex Gold. Save $168/yr.</span></div>
-        </div>
-      </div>
-      <div class="agent-card">
-        <div class="agent-header">📋 Enrollment Agent</div>
-        <div class="agent-body">
-          <div class="agent-title">One-Tap Enrollments</div>
-          <div class="agent-desc">Identifies premium memberships you haven't activated — CLEAR, Walmart+, Global Entry — and walks you through enrollment with one tap.</div>
-          <div class="agent-example">CLEAR Plus: $189/yr — covered<br><span class="highlight">→ Tap to enroll. Skip airport lines.</span></div>
-        </div>
-      </div>
-      <div class="agent-card">
-        <div class="agent-header">📞 Retention Agent</div>
-        <div class="agent-body">
-          <div class="agent-title">Fee Negotiation Prep</div>
-          <div class="agent-desc">When your annual fee posts, generates a data-backed retention script with your spend, tenure, and ROI — plus the issuer's direct number.</div>
-          <div class="agent-example">Amex Platinum: 179% ROI<br>Annual spend: $45,000<br><span class="highlight">→ Script ready. Call 1-800-528-4800.</span></div>
-        </div>
-      </div>
-      <div class="agent-card">
-        <div class="agent-header">🎯 Points Max Agent</div>
-        <div class="agent-body">
-          <div class="agent-title">Card Optimizer</div>
-          <div class="agent-desc">Scans your last 30 days of spending and compares points earned on each transaction against every card in your wallet. Shows you exactly where you left points on the table.</div>
-          <div class="agent-example">15 transactions flagged<br>2,400 points missed<br><span class="highlight">→ Use Amex Gold for grocery. 4x beats 1x.</span></div>
-        </div>
-      </div>
-      <div class="agent-card">
-        <div class="agent-header">📊 ROI Agent</div>
-        <div class="agent-body">
-          <div class="agent-title">Recovery Report</div>
-          <div class="agent-desc">Generates a shareable annual fee recovery report — like Spotify Wrapped for your credit cards. Shows exactly what you recovered and what's left.</div>
-          <div class="agent-example">Annual fees: $1,245<br>Recovered: $1,847<br><span class="highlight">→ Net gain: +$602. Share it.</span></div>
+      <div class="rv" style="transition-delay:.14s">
+        <div class="demo">
+          <div class="stage">
+            <div class="device"><div class="screen"><div class="notch"></div>
+              <div class="sbar"><span>9:41</span><span>· · ·</span></div>
+              <div class="scr" data-demo="home"></div>
+            </div></div>
+          </div>
+          <div class="reflect"></div>
+          <div class="demo-cap"><div class="step"></div><div class="ticks"></div></div>
         </div>
       </div>
     </div>
   </div>
+</header>
+
+<!-- ══ PROBLEM ══ -->
+<section class="sec sec-gold" id="problem">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">The problem</span>
+      <h2>Money leaves quietly. That is the design.</h2>
+      <p>An unused credit is profit. A quiet price increase is margin. A refund window that closes is a refund nobody had to pay. <b>Every one of these is somebody's plan, and none of them are yours.</b></p>
+    </div>
+    <div class="leak-list" data-stagger="300">
+      <div><div class="w">The hotel credit that expired in December. <b>Nobody sent a reminder.</b></div><div class="mv md r">$300</div></div>
+      <div><div class="w">The internet bill that climbed at renewal. <b>No announcement, no email.</b></div><div class="mv md r">$240</div></div>
+      <div><div class="w">The price that fell nine days after you bought it. <b>The window was still open.</b></div><div class="mv md r">$71</div></div>
+      <div><div class="w">The streaming bill one of your cards already covers. <b>Charged to the wrong one.</b></div><div class="mv md r">$84</div></div>
+      <div><div class="w">Groceries on the 1x card while the 4x sat in your wallet. <b>Every single week.</b></div><div class="mv md r">$188</div></div>
+    </div>
+    <div class="leak-total rv">
+      <span class="lab">One year, one household, nothing unusual</span>
+      <span class="mv xl r" data-count="883" data-pre="$" data-delay="1500">$0</span>
+    </div>
+    <p class="lab sm mt16">Illustrative figures from a simulated Yield account</p>
+  </div>
 </section>
 
-<!-- ─── TRUST ─── -->
-<section class="trust reveal" id="trust">
-  <div class="section-eyebrow">Security First</div>
-  <h2 class="section-title">Your Data, Your Control</h2>
-  <p class="section-body">Yield never stores card numbers, CVV, or bank credentials. Every agent action requires Face ID. You can delete all data instantly.</p>
-
-  <div class="trust-grid">
-    <div class="trust-item">
-      <div class="trust-icon">🔐</div>
-      <div class="trust-name">Face ID Required</div>
-      <div class="trust-desc">Every financial action confirmed with biometric authentication.</div>
+<!-- ══ WHY ══ -->
+<section class="sec sec-hair">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">Why it works</span>
+      <h2>Nobody on the other side is being careless.</h2>
+      <p>Every one of these systems is working exactly as intended. The friction is the product.</p>
     </div>
-    <div class="trust-item">
-      <div class="trust-icon">📋</div>
-      <div class="trust-name">Full Audit Log</div>
-      <div class="trust-desc">Every search, click, and action logged with timestamp.</div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon">⏸</div>
-      <div class="trust-name">Kill Switch</div>
-      <div class="trust-desc">Pause all agent activity instantly. Resume when ready.</div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon">🗑</div>
-      <div class="trust-name">Full Deletion</div>
-      <div class="trust-desc">Delete your account and all personal data in one tap.</div>
+    <div class="grid-3">
+      <div class="why-col rv"><div class="n">01</div><h4>Your issuer will not remind you</h4>
+        <p>A credit that expires unused is margin that never had to be paid out. There is no department whose job is to make sure you spend it. There is a department whose job is to make sure you keep paying the fee.</p></div>
+      <div class="why-col rv" style="transition-delay:.09s"><div class="n">02</div><h4>The refund window is quiet on purpose</h4>
+        <p>Most large retailers will refund a price difference inside a set window. Almost nobody asks, because almost nobody is still watching the price of something they already own.</p></div>
+      <div class="why-col rv" style="transition-delay:.18s"><div class="n">03</div><h4>Your bills rise on a schedule</h4>
+        <p>Introductory rates end. Renewal premiums step up. The increase arrives inside a line item you stopped reading eleven months ago, and it compounds every year you do not challenge it.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ─── CARDS SUPPORTED ─── -->
-<section class="cards-section reveal" id="cards">
-  <div class="section-eyebrow">Coverage</div>
-  <h2 class="section-title">18 Premium Cards. 6 Issuers.</h2>
-  <p class="section-body">Full benefit catalogs, points multipliers, and expiration tracking for every card.</p>
-
-  <div class="cards-grid">
-    <div class="issuer-group">
-      <h3 class="issuer-name">American Express</h3>
-      <ul class="issuer-cards">
-        <li>Platinum</li>
-        <li>Gold</li>
-        <li>Green</li>
-        <li>Blue Cash Preferred</li>
-        <li>Delta SkyMiles Reserve</li>
-      </ul>
+<!-- ══ START ══ -->
+<section class="sec sec-hair">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">Getting started</span>
+      <h2>Three minutes, then it goes quiet.</h2>
+      <p>Only the first step needs you at a keyboard. Yield takes its own time over the second, and comes back once, when it needs a name for something you keep buying.</p>
     </div>
-    <div class="issuer-group">
-      <h3 class="issuer-name">Chase</h3>
-      <ul class="issuer-cards">
-        <li>Sapphire Reserve</li>
-        <li>Sapphire Preferred</li>
-        <li>Freedom Unlimited</li>
-        <li>United Explorer</li>
-      </ul>
+    <div class="grid-4">
+      <div class="tile step-card rv"><div class="glow"></div><div class="num">01</div><h4>Connect your cards</h4>
+        <p>Plaid carries the link across more than twelve thousand institutions. Yield finds your cards on it and loads every benefit they owe you, each with its own clock. The connection is read only, and Yield never sees your login.</p></div>
+      <div class="tile step-card rv" style="transition-delay:.07s"><div class="glow"></div><div class="num">02</div><h4>Yield learns what you buy on repeat</h4>
+        <p>You do nothing here. Reading your own purchases, Yield works out what you buy on a rhythm, and roughly how often. Nothing is watched yet. It waits until the habit is clear, so it asks you about the things you actually repurchase.</p></div>
+      <div class="tile step-card rv" style="transition-delay:.14s"><div class="glow"></div><div class="num">03</div><h4>Name the item, once</h4>
+        <p>Yield surfaces the pattern and asks for the exact thing. Forward the order email to your private address and the watch locks on by name, size and store. A transaction says where you spent. A receipt says what you bought.</p></div>
+      <div class="tile step-card rv" style="transition-delay:.21s"><div class="glow"></div><div class="num">04</div><h4>Then nothing, until it matters</h4>
+        <p>No daily digest. No streak to maintain. Yield speaks when a credit is about to die, when a price falls inside a window, when a bill creeps, and when a credit finally posts.</p></div>
     </div>
-    <div class="issuer-group">
-      <h3 class="issuer-name">Capital One</h3>
-      <ul class="issuer-cards">
-        <li>Venture X</li>
-        <li>Venture</li>
-        <li>SavorOne</li>
-      </ul>
-    </div>
-    <div class="issuer-group">
-      <h3 class="issuer-name">Citi</h3>
-      <ul class="issuer-cards">
-        <li>Strata Premier</li>
-        <li>Double Cash</li>
-      </ul>
-    </div>
-    <div class="issuer-group">
-      <h3 class="issuer-name">Bank of America</h3>
-      <ul class="issuer-cards">
-        <li>Premium Rewards</li>
-        <li>Customized Cash</li>
-      </ul>
-    </div>
-    <div class="issuer-group">
-      <h3 class="issuer-name">Wells Fargo</h3>
-      <ul class="issuer-cards">
-        <li>Autograph Journey</li>
-        <li>Active Cash</li>
-      </ul>
-    </div>
-  </div>
-  <p style="font-size:13px;color:var(--text3);margin-top:24px;text-align:center;">More cards coming soon. Have a card you'd like supported? <a href="mailto:hello@getyield.io" style="color:var(--gold);">Let us know.</a></p>
-</section>
-
-<!-- ─── CTA ─── -->
-<section class="cta">
-  <div class="cta-inner">
-    <div class="section-eyebrow">Early Access</div>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;margin-bottom:16px;">Ready to Recover <span style="color:var(--gold);font-style:italic;">Every Dollar</span>?</h2>
-    <p style="font-size:16px;color:var(--text2);margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto;">Yield is launching on iOS in 2026. Request early access and be among the first to stop leaving money on the table.</p>
-    <a href="mailto:ben@getyield.io" class="btn-primary">Request Early Access →</a>
-    <div style="font-size:12px;color:var(--text3);margin-top:16px;">Free during beta · No credit card required</div>
   </div>
 </section>
 
-<!-- ─── FOOTER ─── -->
+<!-- ══ THE WORK ══ -->
+<section class="sec sec-gold" id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">The work</span>
+      <h2>Five fights, running in the background.</h2>
+      <p>Each one reads your own data. Each one ends with a move you make, and a result Yield counts only once the money actually lands.</p>
+    </div>
+
+    <div class="feat">
+      <div class="txt rv">
+        <span class="lab gold">01 · Switchboard</span>
+        <h3>Bills that could ride a benefit you already have.</h3>
+        <p>You are paying full price for something one of your cards already covers. Yield finds those bills and shows you what moving is worth, honestly, including the rewards you give up and the promotions you lose.</p>
+        <p>You make the change at the merchant. Yield watches your statement and confirms the credit only when it posts and matches the charge.</p>
+        <div class="note">Nothing is counted before it posts. <b>A record, not a promise.</b></div>
+      </div>
+      <div class="rv" style="transition-delay:.12s"><div class="demo">
+        <div class="stage"><div class="device sm"><div class="screen"><div class="notch"></div>
+          <div class="sbar"><span>9:41</span><span>· · ·</span></div>
+          <div class="scr" data-demo="switchboard"></div></div></div></div>
+        <div class="demo-cap"><div class="step"></div><div class="ticks"></div></div>
+      </div></div>
+    </div>
+
+    <div class="feat rev">
+      <div class="txt rv">
+        <span class="lab gold">02 · Price Drop Refunds</span>
+        <h3>You bought it. The price fell. The window is still open.</h3>
+        <p>Most stores will refund the difference if you ask inside their window. The window is short, and it starts either the day you buy or the day it arrives.</p>
+        <p>Forward the order email. Yield holds the exact item, watches the price, and tells you the day it drops while you can still act. You make the ask. Yield never files anything as you.</p>
+        <div class="note">Exact items, not guesses. <b>Name, size and store.</b></div>
+      </div>
+      <div class="rv" style="transition-delay:.12s"><div class="demo">
+        <div class="stage"><div class="device sm"><div class="screen"><div class="notch"></div>
+          <div class="sbar"><span>9:41</span><span>· · ·</span></div>
+          <div class="scr" data-demo="pricedrop"></div></div></div></div>
+        <div class="demo-cap"><div class="step"></div><div class="ticks"></div></div>
+      </div></div>
+    </div>
+
+    <div class="feat">
+      <div class="txt rv">
+        <span class="lab gold">03 · Watchdog</span>
+        <h3>It learns what you buy on repeat.</h3>
+        <p>This is the part no one else does. Before you track anything, Yield reads your own purchases and works out what you buy on a rhythm, and roughly how often. Then it brings you the pattern and asks for the exact item.</p>
+        <p>You name it once, by forwarding the order email, and the watch holds that thing by name, size and store. After that it stays silent for weeks. When a price moves in your favour on something you already buy, you hear about it, with the evidence behind the number.</p>
+        <div class="note">Prices read from public pages and your own receipts. <b>Never your inbox, never your location.</b></div>
+      </div>
+      <div class="rv" style="transition-delay:.12s"><div class="demo">
+        <div class="stage"><div class="device sm"><div class="screen"><div class="notch"></div>
+          <div class="sbar"><span>9:41</span><span>· · ·</span></div>
+          <div class="scr" data-demo="watchdog"></div></div></div></div>
+        <div class="demo-cap"><div class="step"></div><div class="ticks"></div></div>
+      </div></div>
+    </div>
+
+    <div class="feat rev">
+      <div class="txt rv">
+        <span class="lab gold">04 · Bill Creep</span>
+        <h3>Your bill went up and nobody told you.</h3>
+        <p>Insurance renewals, internet and cable, home security monitoring. These climb on a schedule, and the increase never arrives as an announcement.</p>
+        <p>Yield watches your own recurring bills and speaks only when one creeps, with what you paid before, what you pay now, and what the going rate looks like so you know what to ask for.</p>
+        <div class="note">Creep in your own bills. <b>Nothing generic, nothing borrowed.</b></div>
+      </div>
+      <div class="rv" style="transition-delay:.12s"><div class="demo">
+        <div class="stage"><div class="device sm"><div class="screen"><div class="notch"></div>
+          <div class="sbar"><span>9:41</span><span>· · ·</span></div>
+          <div class="scr" data-demo="billcreep"></div></div></div></div>
+        <div class="demo-cap"><div class="step"></div><div class="ticks"></div></div>
+      </div></div>
+    </div>
+
+    <div class="feat">
+      <div class="txt rv">
+        <span class="lab gold">05 · Point Max</span>
+        <h3>Every purchase that sat on the wrong card.</h3>
+        <p>Yield reads your last month end to end and finds the spend that earned one point where it could have earned four. It names the purchase, the card you used, the card you should have used, and what the gap cost.</p>
+        <p>When the month is clean, it tells you that instead of inventing a miss.</p>
+        <div class="note">"Every purchase already sat on your best card." <b>Also a valid result.</b></div>
+      </div>
+      <div class="rv" style="transition-delay:.12s"><div class="demo">
+        <div class="stage"><div class="device sm"><div class="screen"><div class="notch"></div>
+          <div class="sbar"><span>9:41</span><span>· · ·</span></div>
+          <div class="scr" data-demo="pointmax"></div></div></div></div>
+        <div class="demo-cap"><div class="step"></div><div class="ticks"></div></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EVERYTHING · drag rail ══ -->
+<section class="sec sec-gold" id="all">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">Everything else</span>
+      <h2>The rest of what ships today.</h2>
+      <p>Not a roadmap. Every one of these is a surface in the app right now. <b>Drag to move along the shelf.</b></p>
+    </div>
+  </div>
+  <div class="wrap-wide">
+    <div class="rail-wrap rv" data-rail>
+      <div class="rail">
+        <div class="tile rail-card link"><span class="lab gold">Credit Manager</span><h4 class="mt16">The reading</h4>
+          <p class="sub mt8" style="font-size:15px">What the bureaus will see, and the six mechanics that set it. Position is stated, never graded.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Credit Manager</span><h4 class="mt16">Payment plans</h4>
+          <p class="sub mt8" style="font-size:15px">One amount, split across your revolving cards and timed to each statement close. The payment stays in your hands.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Credit Manager</span><h4 class="mt16">AZEO</h4>
+          <p class="sub mt8" style="font-size:15px">Where your portfolio sits against all zero except one, and whether getting there is feasible this cycle.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Credit Manager</span><h4 class="mt16">Limit increases</h4>
+          <p class="sub mt8" style="font-size:15px">Which issuers you are eligible with, and when their request windows open.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Credit Manager</span><h4 class="mt16">Credit Assurance</h4>
+          <p class="sub mt8" style="font-size:15px">Watches whether your issuer reported a payment that met what each statement required, and keeps the proof row.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Benefits</span><h4 class="mt16">Benefit register</h4>
+          <p class="sub mt8" style="font-size:15px">Every credit on every card with its own clock. Reminders at fourteen, seven, three and one day.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Benefits</span><h4 class="mt16">Expiring sprint</h4>
+          <p class="sub mt8" style="font-size:15px">The credits that close this month, in the order they die.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Benefits</span><h4 class="mt16">Offer Radar</h4>
+          <p class="sub mt8" style="font-size:15px">Targeted offers across the issuers you carry, deduped and ranked by what they are worth to you.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Benefits</span><h4 class="mt16">Retention brief</h4>
+          <p class="sub mt8" style="font-size:15px">Your own numbers, gathered before the annual fee call. You make the call.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Benefits</span><h4 class="mt16">Card ROI</h4>
+          <p class="sub mt8" style="font-size:15px">Fees in against what actually came back. Verified value only, never projections.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Benefits</span><h4 class="mt16">Which card</h4>
+          <p class="sub mt8" style="font-size:15px">The instant answer, from your own wallet, before you pay.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Foundation</span><h4 class="mt16">Purchase patterns</h4>
+          <p class="sub mt8" style="font-size:15px">Yield works out what you buy on a rhythm, and roughly how often, from your own purchases. It brings you the pattern and asks you to name the item.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Foundation</span><h4 class="mt16">Receipt forwarding</h4>
+          <p class="sub mt8" style="font-size:15px">A private forwarding address, off until you turn it on. It is what makes the watch exact.</p></div>
+        <div class="tile rail-card link"><span class="lab gold">Foundation</span><h4 class="mt16">Trust Vault</h4>
+          <p class="sub mt8" style="font-size:15px">Every automated read on the record. If Yield read it, it is written here.</p></div>
+      </div>
+    </div>
+    <div class="rail-hint"><span class="lab sm">Drag</span><span class="bar"><i></i></span><span class="lab sm">or use the arrow keys</span></div>
+  </div>
+</section>
+
+<!-- ══ A DAY ══ -->
+<section class="sec sec-hair">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">A day with it on</span>
+      <h2>Most days, it says nothing.</h2>
+      <p>This is a busy one. Six notices across sixteen hours, and one of them is the sound of nothing happening.</p>
+    </div>
+    <div class="day" data-stagger="260">
+      <div style="display:contents"><div class="day-time">7:04</div><div class="day-item"><h4>Point Max finished reading July</h4><p>Fourteen purchases sat on the wrong card. The gap was $41.20 in points.</p></div></div>
+      <div style="display:contents"><div class="day-time">9:12</div><div class="day-item g"><h4>CeraVe fell $4.82 at Target</h4><p>Below what you usually pay. Yield had the exact item from a receipt you forwarded in June.</p></div></div>
+      <div style="display:contents"><div class="day-time">1:30</div><div class="day-item q"><h4>Nothing</h4><p>Twenty two price checks ran. None of them were worth interrupting you for.</p></div></div>
+      <div style="display:contents"><div class="day-time">4:48</div><div class="day-item"><h4>Comcast crept $19.99</h4><p>Two bills at the new rate. Typical urban mid tier is $74. You are at $89.99.</p></div></div>
+      <div style="display:contents"><div class="day-time">6:15</div><div class="day-item"><h4>Statement closes in three days</h4><p>Sapphire Reserve reports on Aug 21. Bureaus see the statement, not what you owe today.</p></div></div>
+      <div style="display:contents"><div class="day-time">9:00</div><div class="day-item g"><h4>The Disney credit posted</h4><p>$7.00, matched to the charge and reconciled. Counted once, and only once.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST ══ -->
+<section class="sec sec-gold" id="trust">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">Trust</span>
+      <h2>The log is the contract.</h2>
+      <p>Yield asks for a lot of visibility into your money. Here is exactly what that buys, and exactly where it stops.</p>
+    </div>
+    <div class="grid-2">
+      <div class="tile rv">
+        <span class="lab gold">What Yield reads</span>
+        <div class="mt24 stack g16">
+          <div class="row"><div class="mono-chip sm icon">◈</div><div class="grow"><div class="t">Card transactions</div><div class="s">To match benefits and verify that credits actually posted</div></div></div>
+          <div class="rule"></div>
+          <div class="row"><div class="mono-chip sm icon">◧</div><div class="grow"><div class="t">Balances and limits</div><div class="s">For statement closes and reporting dates</div></div></div>
+          <div class="rule"></div>
+          <div class="row"><div class="mono-chip sm icon">✉</div><div class="grow"><div class="t">Receipts you forward</div><div class="s">Only ever the ones you send. Off until you turn it on.</div></div></div>
+        </div>
+      </div>
+      <div class="tile gold rv" style="transition-delay:.09s">
+        <span class="lab gold">Where it stops</span>
+        <div class="mt24 stack g16">
+          <div class="row"><div class="grow"><div class="t">Yield never sees your login</div><div class="s">Plaid carries the link. Yield holds no credentials.</div></div></div>
+          <div class="rule gold"></div>
+          <div class="row"><div class="grow"><div class="t">Yield cannot move money</div><div class="s">The connection is read only. Every payment, call and claim is made by you.</div></div></div>
+          <div class="rule gold"></div>
+          <div class="row"><div class="grow"><div class="t">Your data is not for sale</div><div class="s">Not to advertisers, not to brokers.</div></div></div>
+          <div class="rule gold"></div>
+          <div class="row"><div class="grow"><div class="t">Delete it in the app</div><div class="s">Settings, then delete my account. It happens during the request and you get a reference number.</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="tile rv mt24" style="border-color:var(--hair-str)">
+      <div class="between">
+        <div style="max-width:62ch">
+          <span class="lab gold">The decisive line</span>
+          <p class="sub mt8" style="font-size:17px"><b>A claim earns its seal when the charge is seen, the credit posts, and the two are matched once.</b> Pending money never lands in the verified column. Estimates stay labelled as estimates.</p>
+        </div>
+        <div class="pill g nodot">Verified value, counted once</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NOT THIS ══ -->
+<section class="sec sec-hair" id="not">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">Clarity</span>
+      <h2>Four things Yield is not.</h2>
+      <p>Knowing where a product stops is worth as much as knowing what it does. These are deliberate, and they are not on a roadmap.</p>
+    </div>
+    <div class="grid-2 not-grid">
+      <div class="tile rv"><span class="lab red">Not this</span><h4 class="mt16">A budgeting app</h4>
+        <p class="sub mt8" style="font-size:15.5px">Yield does not categorise your spending or build envelopes. It is not trying to change how you spend. It works on money that is already leaving.</p></div>
+      <div class="tile rv" style="transition-delay:.06s"><span class="lab red">Not this</span><h4 class="mt16">A fraud monitor</h4>
+        <p class="sub mt8" style="font-size:15.5px">Your issuer already watches for fraud and is better placed to. Yield reads your transactions to match benefits and verify credits, not to police them.</p></div>
+      <div class="tile rv" style="transition-delay:.12s"><span class="lab red">Not this</span><h4 class="mt16">A card recommendation engine</h4>
+        <p class="sub mt8" style="font-size:15.5px">Yield will not tell you which card to apply for, and earns nothing if you open one. It squeezes value out of the cards you already carry.</p></div>
+      <div class="tile rv" style="transition-delay:.18s"><span class="lab red">Not this</span><h4 class="mt16">A financial advisor</h4>
+        <p class="sub mt8" style="font-size:15.5px">No allocation advice, no investment opinions, no tax guidance, and no promises about your credit score. Informational tools, stated as such.</p></div>
+    </div>
+    <div class="tile gold rv mt24">
+      <div class="between">
+        <div style="max-width:64ch">
+          <span class="lab gold">What it is</span>
+          <p class="sub mt8" style="font-size:17px"><b>The layer that does the work on the cards and bills you already have.</b> One job, done properly, with the receipts to prove it.</p>
+        </div>
+        <a class="btn" href="#work">See the work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CARDS ══ -->
+<section class="sec sec-hair" id="cards">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">Supported cards</span>
+      <h2>Eighteen cards. Six issuers.</h2>
+      <p>Every benefit matched to the catalog, with its own reset rule and expiry window. More get added as the catalog grows.</p>
+    </div>
+    <div class="cardgrid rv">
+      <div class="card-tile">
+        <div data-face="amex-platinum"></div>
+        <div class="meta"><div><div class="cn">Amex Platinum</div><div class="ci">American Express</div></div><div class="mv sm">$895</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="chase-sapphire-reserve"></div>
+        <div class="meta"><div><div class="cn">Sapphire Reserve</div><div class="ci">Chase</div></div><div class="mv sm">$795</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="amex-delta-reserve"></div>
+        <div class="meta"><div><div class="cn">Delta SkyMiles Reserve</div><div class="ci">American Express</div></div><div class="mv sm">$650</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="capital-one-venture-x"></div>
+        <div class="meta"><div><div class="cn">Venture X</div><div class="ci">Capital One</div></div><div class="mv sm">$395</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="amex-gold"></div>
+        <div class="meta"><div><div class="cn">Amex Gold</div><div class="ci">American Express</div></div><div class="mv sm">$325</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="amex-green"></div>
+        <div class="meta"><div><div class="cn">Amex Green</div><div class="ci">American Express</div></div><div class="mv sm">$150</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="chase-united-explorer"></div>
+        <div class="meta"><div><div class="cn">United Explorer</div><div class="ci">Chase</div></div><div class="mv sm">$150</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="chase-sapphire-preferred"></div>
+        <div class="meta"><div><div class="cn">Sapphire Preferred</div><div class="ci">Chase</div></div><div class="mv sm">$95</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="amex-blue-cash-preferred"></div>
+        <div class="meta"><div><div class="cn">Blue Cash Preferred</div><div class="ci">American Express</div></div><div class="mv sm">$95</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="capital-one-venture"></div>
+        <div class="meta"><div><div class="cn">Venture</div><div class="ci">Capital One</div></div><div class="mv sm">$95</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="citi-strata-premier"></div>
+        <div class="meta"><div><div class="cn">Strata Premier</div><div class="ci">Citi</div></div><div class="mv sm">$95</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="bofa-premium-rewards"></div>
+        <div class="meta"><div><div class="cn">Premium Rewards</div><div class="ci">Bank of America</div></div><div class="mv sm">$95</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="wells-fargo-autograph-journey"></div>
+        <div class="meta"><div><div class="cn">Autograph Journey</div><div class="ci">Wells Fargo</div></div><div class="mv sm">$95</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="chase-freedom-unlimited"></div>
+        <div class="meta"><div><div class="cn">Freedom Unlimited</div><div class="ci">Chase</div></div><div class="mv sm dim">No fee</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="capital-one-savorone"></div>
+        <div class="meta"><div><div class="cn">SavorOne</div><div class="ci">Capital One</div></div><div class="mv sm dim">No fee</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="citi-double-cash"></div>
+        <div class="meta"><div><div class="cn">Double Cash</div><div class="ci">Citi</div></div><div class="mv sm dim">No fee</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="bofa-travel-rewards"></div>
+        <div class="meta"><div><div class="cn">Travel Rewards</div><div class="ci">Bank of America</div></div><div class="mv sm dim">No fee</div></div>
+      </div>
+      <div class="card-tile">
+        <div data-face="wells-fargo-active-cash"></div>
+        <div class="meta"><div><div class="cn">Active Cash</div><div class="ci">Wells Fargo</div></div><div class="mv sm dim">No fee</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="sec sec-hair">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="lab gold">Questions</span><h2>The ones worth answering.</h2></div>
+    <div class="faq rv">
+      <details><summary>Does Yield actually do things for me, or just tell me?<span class="plus">+</span></summary>
+        <div class="ans">It prepares and stops. Yield reads your own data, works out the move, and puts it in front of you ready to go. Scripts get copied, orders get placed, calls get made, refunds get asked for, by you. Nothing is filed or purchased in your name. That is a deliberate line, not a missing feature.</div></details>
+      <details><summary>What can Yield see?<span class="plus">+</span></summary>
+        <div class="ans">Card transactions, balances and limits through a read only Plaid connection, plus any receipt emails you choose to forward. Not your checking or savings accounts, not your card numbers, not your login. Receipt forwarding is off until you switch it on, and only reaches emails you send yourself.</div></details>
+      <details><summary>Will this improve my credit score?<span class="plus">+</span></summary>
+        <div class="ans">Yield does not promise score outcomes and will not claim any. What it does is show you what the bureaus will see before they see it: your utilization, which cards report when, and what a payment before a close would change. Position is stated, never graded, and payments always stay in your hands.</div></details>
+      <details><summary>How does Yield decide what is worth watching?<span class="plus">+</span></summary>
+        <div class="ans">From your own purchases. Yield works out what you buy on a rhythm, and roughly how often, then brings you that pattern instead of a catalogue of things you have never bought. Nothing is watched until you name the item, and naming it is one tap or one forwarded order email.</div></details>
+      <details><summary>How does it know a price actually dropped?<span class="plus">+</span></summary>
+        <div class="ans">It holds the exact item from your own receipt, by name, size and store, and reads prices from public product pages. When it shows you a drop it shows the evidence behind the number, including what you paid and what the price has done since.</div></details>
+      <details><summary>What counts as money Yield got back?<span class="plus">+</span></summary>
+        <div class="ans">Only a credit that posted to your statement and matched a charge, counted once. Expected value, modeled value and anything still in flight stay in their own columns, clearly labelled. Yield will not show a number it cannot stand behind.</div></details>
+      <details><summary>How often will it interrupt me?<span class="plus">+</span></summary>
+        <div class="ans">Rarely. There is no daily digest and no streak. You hear from Yield when a credit is about to expire, when a tracked price drops inside a window, when one of your own bills creeps, and when a credit finally posts.</div></details>
+      <details><summary>What does it cost?<span class="plus">+</span></summary>
+        <div class="ans">Pricing is not set yet. Yield is in build and not on the App Store or Google Play. Leave your email and you will hear from us the day it is, with the pricing stated plainly before you sign up for anything.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PURPOSE ══ -->
+<section class="sec purpose sec-gold" id="purpose">
+  <div class="wrap">
+    <img class="mark-lg rv" src="/assets/yield-mark.png" alt="Yield">
+    <h2 class="rv" style="transition-delay:.06s">Yield fights for your money.</h2>
+    <p class="rv" style="transition-delay:.12s">Every party in this arrangement has someone working for it. The issuer has a department. The merchant has a policy. The insurer has a renewal schedule. You had nobody. Yield is the one on your side of the table, and it counts a win only when the money actually lands.</p>
+    <div class="flexrow mid mt32 rv" style="transition-delay:.18s">
+      <a class="btn" href="#" onclick="soon(event)">Get the app</a>
+      <a class="btn ghost" href="#work">Watch it work</a>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <div class="footer-brand">
-    <a href="/" class="nav-logo">yield</a>
-    <div class="footer-tag">Your Card · Your Return</div>
-  </div>
-  <div class="footer-links">
-    <div class="footer-col">
-      <h4>Product</h4>
-      <a href="#features">Features</a>
-      <a href="#agents">AI Agents</a>
-      <a href="#how">How It Works</a>
-      <a href="#trust">Security</a>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a href="/" class="mark"><img src="/assets/yield-mark.png" alt=""><span class="wm">yield</span></a>
+        <p class="sub mt16" style="font-size:14.5px;max-width:32ch;color:var(--muted)">The money layer on the cards you already carry.</p>
+        <div class="badges">
+          <div class="badge" onclick="soon(event)" role="button" tabindex="0">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.5c0-2.2 1.8-3.3 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8s-1.8-.8-2.9-.8c-1.5 0-2.9.9-3.6 2.2-1.6 2.7-.4 6.7 1.1 8.9.7 1.1 1.6 2.3 2.7 2.2 1.1 0 1.5-.7 2.8-.7s1.7.7 2.9.7 2-1.1 2.7-2.1c.8-1.2 1.2-2.4 1.2-2.5 0 0-2.2-.9-2.2-3.7zM14.8 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.6-.9 2.6 1 .1 2-.5 2.6-1.2z"/></svg>
+            <span><span class="bt">Download on the</span><span class="bn">App Store</span></span>
+          </div>
+          <div class="badge" onclick="soon(event)" role="button" tabindex="0">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.6 2.3zM16.4 15.4l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1 .6 1 1.6 0 2.2l-3.8 2zM15.5 16.3l-3.2-3.2-9.3 9.3c.3.4.9.4 1.5.1l11-6.2zM15.5 7.7l-11-6.2c-.6-.4-1.2-.3-1.5.1l9.3 9.3 3.2-3.2z"/></svg>
+            <span><span class="bt">Get it on</span><span class="bn">Google Play</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="f-col"><h5>The work</h5><a href="#work">Switchboard</a><a href="#work">Price Drop Refunds</a><a href="#work">Watchdog</a><a href="#work">Bill Creep</a><a href="#work">Point Max</a></div>
+      <div class="f-col"><h5>More</h5><a href="#all">Credit Manager</a><a href="#all">Benefit register</a><a href="#all">Offer Radar</a><a href="#all">Trust Vault</a><a href="#cards">Supported cards</a></div>
+      <div class="f-col"><h5>Company</h5><a href="#purpose">Purpose</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="mailto:support@getyield.io">Support</a></div>
     </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="/privacy.html">Privacy Policy</a>
-      <a href="/terms.html">Terms of Service</a>
-      <a href="mailto:hello@getyield.io">Contact</a>
-    </div>
-    <div class="footer-col">
-      <h4>Connect</h4>
-      <a href="mailto:ben@getyield.io">ben@getyield.io</a>
+    <div class="f-legal">
+      Yield is not a financial advisor and does not provide financial advice. Yield is not affiliated with, endorsed by, or sponsored by any card issuer. Card names, logos and benefit programs are trademarks of their respective owners. Product screens and animated demonstrations on this page are simulated and illustrate how Yield presents information. They are not a guarantee of any particular outcome, and all figures shown are illustrative. Benefit terms, prices, merchant refund policies and issuer offers change without notice. Always verify details with your issuer or merchant.
+      <br><br>© 2026 Yield. All rights reserved.
     </div>
   </div>
 </footer>
-<div class="footer-bottom">© 2026 Yield. All rights reserved.</div>
 
-<!-- ─── SCROLL REVEAL ─── -->
-<script>
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
-reveals.forEach(el => observer.observe(el));
-</script>
+<div class="modal" id="soon" onclick="if(event.target.id==='soon')closeSoon()">
+  <div class="modal-in tile gold" role="dialog" aria-modal="true" aria-label="Coming soon">
+    <img src="/assets/yield-mark.png" alt="">
+    <span class="lab gold">Not yet</span>
+    <h3>Coming to your phone.</h3>
+    <p>Yield is in build. The App Store and Google Play listings are not live yet. Send a note and you will hear from us the day they are.</p>
+    <a class="btn" href="mailto:ben@getyield.io?subject=Yield%20early%20access">Email us</a>
+  </div>
+</div>
 
+<script src="/assets/yield-cards.js"></script>
+<script src="/assets/yield-demos.js"></script>
 </body>
 </html>

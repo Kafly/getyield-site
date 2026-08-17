@@ -1,354 +1,268 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — Yield</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg: #050505;
-      --surface: #0c0c0c;
-      --card: #111;
-      --gold: #C9A227;
-      --gold-border: rgba(201, 162, 39, 0.12);
-      --green: #00E87A;
-      --text: #F2F0EB;
-      --text2: rgba(255, 255, 255, 0.55);
-      --text3: rgba(255, 255, 255, 0.25);
-      --border: rgba(255, 255, 255, 0.05);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    ::selection {
-      background: rgba(201, 162, 39, 0.3);
-      color: #fff;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 0 48px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(5, 5, 5, 0.9);
-      backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 700;
-      font-size: 26px;
-      color: var(--gold);
-      letter-spacing: 0.5px;
-      text-decoration: none;
-    }
-
-    .nav-back {
-      color: var(--text3);
-      text-decoration: none;
-      font-size: 13px;
-      transition: color 0.2s;
-    }
-
-    .nav-back:hover {
-      color: var(--text);
-    }
-
-    .content {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 120px 24px 80px;
-    }
-
-    .page-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 42px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .page-meta {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      color: var(--text3);
-      letter-spacing: 1px;
-      margin-bottom: 48px;
-    }
-
-    h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 700;
-      margin-top: 48px;
-      margin-bottom: 16px;
-      color: var(--gold);
-    }
-
-    h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-top: 32px;
-      margin-bottom: 12px;
-    }
-
-    p {
-      font-size: 15px;
-      color: var(--text2);
-      line-height: 1.8;
-      margin-bottom: 16px;
-    }
-
-    ul {
-      margin: 0 0 16px 20px;
-      color: var(--text2);
-      font-size: 15px;
-      line-height: 1.8;
-    }
-
-    li {
-      margin-bottom: 4px;
-    }
-
-    strong {
-      color: var(--text);
-    }
-
-    .highlight-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin: 24px 0;
-    }
-
-    .highlight-box.green {
-      border-color: rgba(0, 232, 122, 0.15);
-      background: rgba(0, 232, 122, 0.03);
-    }
-
-    .highlight-box.gold {
-      border-color: var(--gold-border);
-      background: rgba(201, 162, 39, 0.03);
-    }
-
-    .highlight-box p {
-      margin-bottom: 0;
-    }
-
-    .footer-simple {
-      text-align: center;
-      padding: 40px 24px;
-      font-size: 11px;
-      color: var(--text3);
-      border-top: 1px solid var(--border);
-      margin-top: 64px;
-    }
-
-    @media(max-width:768px) {
-      nav {
-        padding: 0 20px;
-      }
-
-      .content {
-        padding: 100px 20px 60px;
-      }
-
-      .page-title {
-        font-size: 32px;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy · Yield</title>
+<meta name="description" content="What Yield collects, how it is used, and how to delete it.">
+<meta name="theme-color" content="#0B0908">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Schibsted+Grotesk:wght@400..800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.className="js"</script>
+<link rel="stylesheet" href="/assets/yield.css">
+<link rel="stylesheet" href="/assets/legal.css">
 </head>
-
 <body>
 
-  <nav>
-    <a href="/" class="nav-logo">yield</a>
-    <a href="/" class="nav-back">← Back to Home</a>
-  </nav>
+<nav>
+  <div class="nav-in">
+    <a href="/" class="mark" aria-label="Yield home"><img src="/assets/yield-mark.png" alt=""><span class="wm">yield</span></a>
+    <div class="nav-links"><a href="/#work">The work</a><a href="/#trust">Trust</a><a href="/terms.html">Terms</a></div>
+    <a class="btn sm" href="/">Back to site</a>
+  </div>
+</nav>
 
-  <div class="content">
+<div class="legal-head">
+  <div class="halo"></div>
+  <div class="wrap">
+    <a href="/" class="back">← Back to home</a>
+    <h1>Privacy Policy</h1>
+    <div class="meta">
+      <span class="lab">Last updated · August 2026</span>
+      <span class="lab">12 sections</span>
+    </div>
+  </div>
+</div>
 
-    <h1 class="page-title">Privacy Policy</h1>
-    <p class="page-meta">Last updated: April 2026</p>
+<div class="wrap legal-body">
+  <aside class="toc">
+    <h5>Contents</h5>
+    <a href="#s1">1 · What we collect</a>
+    <a href="#s2">2 · This website</a>
+    <a href="#s3">3 · How we use it</a>
+    <a href="#s4">4 · AI processing</a>
+    <a href="#s5">5 · Who we share with</a>
+    <a href="#s6">6 · Storage and security</a>
+    <a href="#s7">7 · Retention and deletion</a>
+    <a href="#s8">8 · Your rights</a>
+    <a href="#s9">9 · Marketing and demonstrations</a>
+    <a href="#s10">10 · Children</a>
+    <a href="#s11">11 · Changes</a>
+    <a href="#s12">12 · Contact</a>
+  </aside>
 
-    <p>Yield ("we," "our," or "us") is committed to protecting your privacy. This policy explains what data we collect,
-      how we use it, and the choices you have.</p>
-
-    <div class="highlight-box green">
-      <p><strong>The short version:</strong> We collect only what's needed to track your card benefits. We never store
-        card numbers, CVV, or bank credentials. We never sell your personal data. You can delete everything at any time.
-      </p>
+  <main class="doc">
+    <div class="summary">
+      <span class="lab gold">The short version</span>
+      <p>We collect what is needed to track your card benefits, verify credits and watch prices. <b>We never receive your bank login, your card number, your CVV or your PIN, and the connection is read only.</b> We do not sell your data to anyone. Receipt forwarding is off until you turn it on, and only ever reaches emails you forward yourself. You can delete everything from inside the app.</p>
     </div>
 
-    <h2>What We Collect</h2>
+    <section id="s1">
+      <h2><span class="n">01</span>What we collect</h2>
 
-    <h3>Account Information</h3>
-    <ul>
-      <li><strong>Name and email address</strong> — for account creation and login</li>
-      <li><strong>Authentication method</strong> — email/password or Apple Sign-In</li>
-    </ul>
-
-    <h3>Card & Benefit Data</h3>
-    <ul>
-      <li><strong>Card product names</strong> — which credit card products you hold (e.g., "Amex Platinum," "Chase
-        Sapphire Reserve"). We identify cards by product name only.</li>
-      <li><strong>Benefit usage</strong> — how much of each credit you've used in the current period (e.g., "$85 of $100
-        Resy dining credit used")</li>
-    </ul>
-
-    <h3>Transaction Data (via Plaid)</h3>
-    <p>If you choose to link your bank account, we use Plaid to access:</p>
-    <ul>
-      <li><strong>Transaction history</strong> — merchant name, amount, date, and category. Used to auto-detect benefit
-        usage (e.g., detecting a Resy charge to mark your dining credit as used).</li>
-      <li><strong>Account details</strong> — account type and name, used to identify which credit cards you hold.</li>
-    </ul>
-    <p>Plaid's own privacy policy governs how Plaid handles your data: <a
-        href="https://plaid.com/legal/#end-user-privacy-policy" style="color:var(--gold);">plaid.com/legal</a></p>
-
-    <h3>Device Data</h3>
-    <ul>
-      <li><strong>Push notification token</strong> — for sending benefit expiration alerts</li>
-      <li><strong>Device platform</strong> — iOS (used for app functionality)</li>
-    </ul>
-
-    <h3>Anonymous Analytics</h3>
-    <ul>
-      <li><strong>Usage events</strong> — feature usage, agent task types, benefit categories. These are linked to a
-        one-way hashed anonymous ID that cannot be reversed to identify you.</li>
-    </ul>
-
-    <div class="highlight-box gold">
-      <p><strong>What we NEVER collect:</strong></p>
-      <ul style="margin-bottom:0;">
-        <li>Credit card numbers (full or partial)</li>
-        <li>CVV or security codes</li>
-        <li>Card expiration dates</li>
-        <li>Bank account numbers or routing numbers</li>
-        <li>Social Security numbers</li>
-        <li>Bank login credentials (Plaid handles authentication securely)</li>
-        <li>Location data</li>
-        <li>Contacts, photos, or browsing history</li>
+      <h3>Account data</h3>
+      <ul>
+        <li>Email address and sign in credentials, either an email address and password or Apple Sign-In</li>
+        <li>Device push notification token, so that benefit expiry and price alerts can reach your phone</li>
       </ul>
+
+      <h3>Financial data, through Plaid</h3>
+      <ul>
+        <li>Credit card account names and identifiers</li>
+        <li>Transaction history, including merchant names, dates and amounts</li>
+        <li>Balances, credit limits and statement timing, used for reporting and close date features</li>
+        <li>We do <b>not</b> receive your card number, CVV, PIN or bank login credentials</li>
+        <li>We do <b>not</b> access checking, savings or investment accounts</li>
+      </ul>
+
+      <h3>Receipt data, only if you turn on receipt forwarding</h3>
+      <ul>
+        <li>Receipt forwarding is off until you turn it on, and you can stop at any time</li>
+        <li>When it is on, we give you a private forwarding address and receive the emails you forward to it</li>
+        <li>We receive the whole forwarded email: the original sender, the subject, the date and the full message body</li>
+        <li>The email is stored so that it can be parsed, and it is removed when you delete your account</li>
+        <li>We only ever see emails you forward yourself. We do not read, connect to, or scan any mailbox.</li>
+      </ul>
+
+      <h3>Product and usage data</h3>
+      <ul>
+        <li>Benefit tracking records, meaning which benefits you have used and which credits have posted</li>
+        <li>Products and prices you ask Yield to watch, and products identified from receipts you forward</li>
+        <li>App interaction data, meaning screens viewed and features used</li>
+        <li>Technical error logs</li>
+      </ul>
+    </section>
+
+    <section id="s2">
+      <h2><span class="n">02</span>This website</h2>
+      <p>This website is a static marketing site.</p>
+      <ul>
+        <li>It sets no cookies and does not use advertising or analytics trackers</li>
+        <li>It does not collect personal information, and there is no form on it that submits data to us</li>
+        <li>Web fonts are loaded from Google Fonts, which receives your IP address as part of that request. This is the only third party request the page makes.</li>
+        <li>If you email us from a link on this site, we receive whatever you put in that email, and we use it only to reply</li>
+        <li>Our host records standard server access logs, including IP address and user agent, for security and reliability</li>
+      </ul>
+    </section>
+
+    <section id="s3">
+      <h2><span class="n">03</span>How we use your data</h2>
+      <ul>
+        <li>Match transactions to card benefits, and verify whether a credit posted and matched a charge</li>
+        <li>Calculate benefit recovery and expiry timelines, and send reminders before a credit closes</li>
+        <li>Identify bills that could be charged to a card whose benefits cover them</li>
+        <li>Watch prices for products you track, and identify when a purchase is inside a merchant refund window</li>
+        <li>Detect increases in your own recurring bills</li>
+        <li>Compare your spending against the earning rates of your cards</li>
+        <li>Show what your accounts are likely to report to the bureaus and when</li>
+        <li>Send push notifications for the events above</li>
+        <li>Operate, secure, debug and improve the service</li>
+      </ul>
+      <p>We do not use your personal data to build marketing demonstrations. See section 9.</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="n">04</span>AI processing</h2>
+      <p>Two separate things happen here and they differ, so they are described separately.</p>
+
+      <h3>Matching your transactions</h3>
+      <ul>
+        <li>We use AI to work out which merchant a transaction belongs to and whether it matches a benefit</li>
+        <li>What is sent is the merchant name and typical amounts. Not your name, your account, or your card number.</li>
+        <li>Classifications are cached, so the same merchant is only classified once</li>
+      </ul>
+
+      <h3>Reading receipts you forward</h3>
+      <ul>
+        <li>When a receipt cannot be read by our own parser, the email is sent to our AI provider, Anthropic, to be read</li>
+        <li>What is sent is the original sender, the subject, the date and the body of that email</li>
+        <li>Before it is sent we remove signatures, quoted email threads and tracking pixels</li>
+        <li>We do not claim to remove anything else. If the receipt body contains it, assume it is sent.</li>
+        <li>Only the forwarded receipt is ever sent this way. Your connected account data, meaning balances, transactions and card details, is never included.</li>
+        <li>Anthropic processes it on our behalf, does not train its models on it, and does not keep it beyond its own short operational retention</li>
+      </ul>
+    </section>
+
+    <section id="s5">
+      <h2><span class="n">05</span>Who we share with</h2>
+      <ul>
+        <li><b>We do not sell your data.</b> Not to advertisers, not to data brokers, not to anyone.</li>
+        <li>We do not share your data with advertisers</li>
+        <li>We share data only with the service providers needed to operate the app</li>
+      </ul>
+      <h3>Our processors</h3>
+      <ul>
+        <li><b>Plaid</b> to connect your accounts securely</li>
+        <li><b>Supabase</b> to store your data, encrypted at rest</li>
+        <li><b>Postmark</b> to receive the receipt emails you forward, if you turn receipt forwarding on</li>
+        <li><b>Anthropic</b> to classify transaction merchants, and to read the receipt emails you forward, as described in section 4</li>
+        <li><b>Expo</b> to deliver push notifications</li>
+      </ul>
+      <p>We may disclose data where required by law, or where necessary to protect the rights, safety or property of Yield or another person.</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="n">06</span>Storage and security</h2>
+      <ul>
+        <li>Data is stored on Supabase, a PostgreSQL platform, with encryption at rest</li>
+        <li>All API communication uses HTTPS and TLS</li>
+        <li>If you sign in with a password, it is stored only as a salted hash by our authentication provider, never in readable form</li>
+        <li>Signing in with Apple uses Apple's identity tokens. We never see an Apple password.</li>
+        <li>Row level security ensures you can only access your own data</li>
+        <li>Plaid access tokens are held server side and are not readable by the app</li>
+      </ul>
+      <div class="callout">
+        <p>No service can promise perfect security. We design so that the most sensitive material, meaning your logins and card numbers, never reaches us in the first place.</p>
+      </div>
+    </section>
+
+    <section id="s7">
+      <h2><span class="n">07</span>Retention and deletion</h2>
+      <ul>
+        <li>We retain your data for as long as your account is active</li>
+        <li>You can delete your account in the app under Settings, then delete my account</li>
+        <li>We confirm who you are before deleting, by signing you in again through your own provider</li>
+        <li>Deletion happens immediately. Your cards, benefit history, receipts, bank connections and the account itself are removed during the request.</li>
+        <li>You get a reference number for the deletion, and it tells you plainly if any step did not finish</li>
+      </ul>
+      <h3>What survives a deletion</h3>
+      <p>These are stated because they genuinely survive. We do not claim a purge we do not actually run.</p>
+      <ul>
+        <li>Receipt emails you forwarded are kept until you delete your account, which removes them. To clear forwarded receipts without closing your account, email <a class="inline" href="mailto:privacy@getyield.io">privacy@getyield.io</a>.</li>
+        <li>We keep an anonymous record that a deletion happened: its reference number, its outcome and the month. It contains nothing that identifies you or your account.</li>
+        <li>Technical error logs written around the time of deletion may survive and are not linked to any account we can identify</li>
+        <li>Cached merchant classifications, which are anonymised, may be retained</li>
+      </ul>
+      <p>If a deletion does not finish, or you want to dispute one, email <a class="inline" href="mailto:privacy@getyield.io">privacy@getyield.io</a>.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="n">08</span>Your rights</h2>
+      <ul>
+        <li><b>Access</b> · request a copy of your data</li>
+        <li><b>Correction</b> · request correction of inaccurate data</li>
+        <li><b>Deletion</b> · delete your account and data, in the app or by contacting us</li>
+        <li><b>Portability</b> · request your data in a machine readable format</li>
+        <li><b>Objection</b> · ask us to stop a particular processing activity, including turning receipt forwarding off</li>
+      </ul>
+      <p>To exercise any of these, email <a class="inline" href="mailto:privacy@getyield.io">privacy@getyield.io</a>. Depending on where you live you may have additional rights under state law, including the right not to be discriminated against for exercising them. We do not sell or share personal information for cross context behavioural advertising.</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="n">09</span>Marketing and demonstrations</h2>
+      <p>Our website and marketing show animated demonstrations of how Yield works, and product screens containing merchants, prices, deadlines and dollar amounts.</p>
+      <ul>
+        <li><b>These are built from sample and seeded data.</b> They are not drawn from any customer's account.</li>
+        <li>We do not use your personal data, your transactions, your receipts or your account figures to create marketing material</li>
+        <li>Demonstrations are illustrative of how the service presents information and what it pursues. They are not a guarantee of outcomes. The <a class="inline" href="/terms.html#s9">Terms of Service</a> set this out in full.</li>
+        <li>If we ever want to feature a real customer outcome, we will ask that customer for permission first and identify it as a real result</li>
+      </ul>
+    </section>
+
+    <section id="s10">
+      <h2><span class="n">10</span>Children</h2>
+      <ul>
+        <li>Yield is not intended for anyone under 18</li>
+        <li>We do not knowingly collect data from minors</li>
+        <li>If you believe a minor has given us data, email <a class="inline" href="mailto:privacy@getyield.io">privacy@getyield.io</a> and we will delete it</li>
+      </ul>
+    </section>
+
+    <section id="s11">
+      <h2><span class="n">11</span>Changes</h2>
+      <p>We may update this policy. Material changes will be communicated in the app. Continued use after a change takes effect constitutes acceptance.</p>
+    </section>
+
+    <section id="s12">
+      <h2><span class="n">12</span>Contact</h2>
+      <ul>
+        <li>Privacy: <a class="inline" href="mailto:privacy@getyield.io">privacy@getyield.io</a></li>
+        <li>Support: <a class="inline" href="mailto:support@getyield.io">support@getyield.io</a></li>
+        <li>Website: <a class="inline" href="https://getyield.io/privacy">getyield.io/privacy</a></li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a href="/" class="mark"><img src="/assets/yield-mark.png" alt=""><span class="wm">yield</span></a>
+        <p class="sub mt16" style="font-size:14.5px;max-width:32ch;color:var(--muted)">The money layer on the cards you already carry.</p>
+      </div>
+      <div class="f-col"><h5>Product</h5><a href="/#work">The work</a><a href="/#all">Everything</a><a href="/#cards">Supported cards</a></div>
+      <div class="f-col"><h5>Legal</h5><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a></div>
+      <div class="f-col"><h5>Company</h5><a href="/#purpose">Purpose</a><a href="mailto:support@getyield.io">Support</a></div>
     </div>
-
-    <h2>How We Use Your Data</h2>
-
-    <ul>
-      <li><strong>Benefit tracking</strong> — match transactions to card benefits, calculate recovery rates, and track
-        expiration dates</li>
-      <li><strong>Expiration alerts</strong> — send push notifications when benefits are about to expire (14, 7, 3, and
-        1 day warnings)</li>
-      <li><strong>Agent actions</strong> — search for restaurants, find gift card options, optimize subscriptions, and
-        generate retention scripts based on your card data</li>
-      <li><strong>Offer scanning</strong> — surface relevant offers from your card issuers</li>
-      <li><strong>Product improvement</strong> — anonymous analytics help us understand which features are used and
-        improve the app</li>
-    </ul>
-
-    <h2>How We Protect Your Data</h2>
-
-    <ul>
-      <li><strong>Encryption in transit</strong> — all data transmitted using TLS 1.2+</li>
-      <li><strong>Encryption at rest</strong> — all stored data encrypted using AES-256 via our infrastructure provider
-        (Supabase)</li>
-      <li><strong>Access controls</strong> — row-level security ensures users can only access their own data</li>
-      <li><strong>Biometric protection</strong> — Face ID or Touch ID required for all financial agent actions</li>
-      <li><strong>No raw credentials</strong> — bank authentication handled entirely by Plaid's secure infrastructure
-      </li>
-      <li><strong>Audit logging</strong> — every agent action logged with timestamp for transparency</li>
-    </ul>
-
-    <h2>Data Sharing</h2>
-
-    <p>We do not sell your personal information. We share data only with:</p>
-    <ul>
-      <li><strong>Plaid</strong> — to access your bank transaction data (with your explicit consent via Plaid Link)</li>
-      <li><strong>Supabase</strong> — our infrastructure provider that hosts and encrypts your data</li>
-      <li><strong>Expo</strong> — for push notification delivery</li>
-    </ul>
-    <p>We do not share your data with advertisers, data brokers, or any third parties for marketing purposes.</p>
-
-    <h2>Data Retention</h2>
-
-    <ul>
-      <li><strong>Benefit usage history</strong> — retained for the lifetime of your account (needed for streak tracking
-        and recovery history)</li>
-      <li><strong>Transaction data</strong> — retained for the lifetime of your account (needed for benefit matching)
-      </li>
-      <li><strong>Anonymous analytics</strong> — retained indefinitely (cannot be linked to your identity)</li>
-    </ul>
-
-    <h2>Your Rights & Choices</h2>
-
-    <h3>Account Deletion</h3>
-    <p>You can delete your account at any time from Settings → Delete Account. This permanently removes:</p>
-    <ul>
-      <li>Your profile (name, email)</li>
-      <li>All linked cards and benefit data</li>
-      <li>All transaction data</li>
-      <li>All agent task history</li>
-      <li>All notification preferences and tokens</li>
-      <li>Your authentication account</li>
-    </ul>
-    <p>Anonymous analytics data (which cannot be linked to you) is retained after deletion.</p>
-
-    <h3>Bank Connection</h3>
-    <p>You can disconnect your bank at any time. You can also use Yield without linking a bank by adding cards manually
-      — transaction-based features will be unavailable, but benefit tracking still works.</p>
-
-    <h3>Notifications</h3>
-    <p>You can disable push notifications at any time via your iPhone's Settings.</p>
-
-    <h2>Children's Privacy</h2>
-    <p>Yield is not intended for users under 18. We do not knowingly collect personal information from children.</p>
-
-    <h2>Changes to This Policy</h2>
-    <p>We may update this policy from time to time. We will notify you of significant changes via the app or email. The
-      "Last updated" date at the top of this page reflects the most recent revision.</p>
-
-    <h2>Contact</h2>
-    <p>Questions about this policy or your data?</p>
-    <p>Email: <a href="mailto:privacy@getyield.io" style="color:var(--gold);">privacy@getyield.io</a></p>
-    <p>Or reach us at: <a href="mailto:nobert@getyield.io" style="color:var(--gold);">ben@getyield.io</a></p>
-
+    <div class="f-legal">
+      Yield is not a financial advisor and does not provide financial advice. Yield is not affiliated with, endorsed by, or sponsored by any card issuer. Card names, logos and benefit programs are trademarks of their respective owners.
+      <br><br>© 2026 Yield. All rights reserved.
+    </div>
   </div>
-
-  <div class="footer-simple">
-    <span
-      style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:16px;">yield</span>
-    &nbsp;·&nbsp; © 2026 Yield. All rights reserved.
-    &nbsp;·&nbsp; <a href="/" style="color:var(--text3);text-decoration:none;">Home</a>
-  </div>
+</footer>
 
 </body>
-
 </html>

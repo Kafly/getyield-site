@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yield — Direction A · Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Schibsted+Grotesk:wght@400..800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.className="js"</script>
+<link rel="stylesheet" href="yield-meridian.css">
+<style>
+/* ── direction A: editorial. Argument first, one sticky instrument. ── */
+
+/* hero — typographic, no device */
+header{padding:150px 0 96px;position:relative;overflow:hidden}
+.halo{position:absolute;width:1100px;height:760px;left:50%;transform:translateX(-50%);top:-320px;
+  background:radial-gradient(ellipse,rgba(201,162,39,.11),transparent 66%);pointer-events:none}
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+.eyebrow i{width:34px;height:1px;background:var(--gold);flex:none}
+header h1{font-size:clamp(46px,8.4vw,116px);letter-spacing:-.042em;line-height:.94;max-width:15ch}
+.hero-under{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(30px,6vw,86px);
+  align-items:end;margin-top:clamp(36px,5vw,58px)}
+.hero-under .lede{font-size:20.5px;color:var(--grey);max-width:46ch;line-height:1.6}
+.hero-under .lede b{color:var(--bone);font-weight:600}
+.hero-ledger{border-top:1px solid var(--hair)}
+.hero-ledger .lr{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:15px 0;border-bottom:1px solid var(--hair-n)}
+@media(max-width:900px){.hero-under{grid-template-columns:1fr}header{padding:118px 0 64px}}
+
+/* the case — editorial two column with drop cap */
+.case-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(30px,6vw,88px)}
+.case-grid h2{font-size:clamp(32px,4.6vw,60px)}
+.case-body p{color:var(--grey);font-size:18.5px;line-height:1.62;margin-bottom:22px;max-width:54ch}
+.case-body p.lead::first-letter{
+  font-family:var(--disp);font-style:italic;font-weight:600;font-variation-settings:"opsz" 144,"WONK" 1;
+  font-size:74px;float:left;line-height:.78;padding:8px 14px 0 0;color:var(--gold-l)}
+@media(max-width:900px){.case-grid{grid-template-columns:1fr}}
+
+/* leak */
+.leak-list > div{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;
+  padding:18px 0;border-bottom:1px solid var(--hair-n)}
+.leak-list .w{font-size:17px;color:var(--grey);line-height:1.45}
+.leak-list .w b{color:var(--bone);font-weight:600}
+
+/* incentives — editorial rules, not tiles */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,52px)}
+.why > div{padding-top:22px;border-top:1px solid var(--hair)}
+.why .n{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--gold);margin-bottom:14px}
+.why h4{margin-bottom:10px}
+.why p{color:var(--grey);font-size:15.5px;line-height:1.55}
+@media(max-width:820px){.why{grid-template-columns:1fr}}
+
+/* ── the sticky instrument ────────────────────────────────────────
+   One device holds all five workflows. The essay scrolls past it and
+   the instrument changes to match what you are reading. */
+.scrolly{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(30px,6vw,92px);align-items:start}
+.scrolly-rail{position:sticky;top:120px;display:flex;justify-content:center;padding-top:10px}
+.plate{padding:clamp(58px,10vh,124px) 0;min-height:70vh;display:flex;flex-direction:column;justify-content:center}
+.plate:first-child{padding-top:0}
+.plate .pn{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:20px}
+.plate h3{font-size:clamp(28px,3.6vw,46px);letter-spacing:-.032em}
+.plate p{color:var(--grey);font-size:17.5px;line-height:1.62;margin-top:20px;max-width:46ch}
+.plate .note{margin-top:26px;padding-top:16px;border-top:1px solid var(--hair-n);
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.plate .note b{color:var(--gold-l);font-weight:600}
+.plate.active .pn{color:var(--gold-l)}
+@media(max-width:900px){
+  .scrolly{grid-template-columns:1fr}
+  .scrolly-rail{position:static;margin-bottom:36px}
+  .plate{min-height:0;padding:44px 0}
+}
+
+/* index — typographic services list */
+.idx-group{margin-bottom:36px}
+.idx-l{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+  padding-bottom:12px;border-bottom:1px solid var(--hair)}
+.idx-row{display:grid;grid-template-columns:230px 1fr;gap:26px;padding:16px 0;
+  border-bottom:1px solid var(--hair-n);transition:.25s var(--ease)}
+.idx-row:hover{background:rgba(201,162,39,.05);padding-left:12px;border-color:var(--hair)}
+.idx-row .n{font-size:18px;font-weight:600;color:var(--bone);letter-spacing:-.018em}
+.idx-row .d{color:var(--grey);font-size:15.5px;line-height:1.5}
+@media(max-width:720px){.idx-row{grid-template-columns:1fr;gap:5px}}
+
+/* day */
+.day{display:grid;grid-template-columns:96px 1fr}
+.day-time{font-family:var(--mono);font-size:11px;letter-spacing:.13em;color:var(--gold);padding:22px 0;text-transform:uppercase}
+.day-item{padding:22px 0 22px 26px;border-left:1px solid var(--hair-n);position:relative}
+.day-item::before{content:"";position:absolute;left:-4.5px;top:29px;width:8px;height:8px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 0 4px var(--ground)}
+.day-item.q::before{background:var(--faint)}
+.day-item.g::before{background:var(--green)}
+.day-item h4{font-size:17px;margin-bottom:5px}
+.day-item p{color:var(--muted);font-size:14.5px}
+@media(max-width:620px){.day{grid-template-columns:70px 1fr}}
+
+/* cards */
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px}
+.cardrow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;
+  border-radius:var(--r-sm);border:1px solid var(--hair-n);background:rgba(255,255,255,.022);transition:.25s var(--ease)}
+.cardrow:hover{border-color:var(--hair-str);background:rgba(201,162,39,.05)}
+.cardrow .cn{font-size:14.5px;font-weight:600;color:var(--bone);line-height:1.25}
+.cardrow .ci{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+
+/* faq */
+details{border-bottom:1px solid var(--hair-n)}
+details summary{cursor:pointer;list-style:none;padding:22px 0;display:flex;justify-content:space-between;
+  align-items:center;gap:20px;font-size:18px;font-weight:600;color:var(--bone);transition:color .2s}
+details summary::-webkit-details-marker{display:none}
+details summary:hover{color:var(--gold-l)}
+details summary .plus{font-family:var(--mono);color:var(--gold);flex:none;transition:transform .3s var(--ease)}
+details[open] summary .plus{transform:rotate(45deg)}
+details .ans{padding:0 0 24px;color:var(--grey);font-size:16px;max-width:74ch;line-height:1.65}
+
+/* purpose */
+.purpose{text-align:center;background:radial-gradient(ellipse 62% 52% at 50% 34%,rgba(201,162,39,.11),transparent 70%)}
+.purpose h2{font-size:clamp(38px,6.6vw,92px);line-height:.98;letter-spacing:-.04em}
+.purpose p{color:var(--grey);font-size:18.5px;max-width:58ch;margin:30px auto 0;line-height:1.65}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="#" class="mark">
+      <svg class="y" viewBox="0 0 24 24" fill="none"><path d="M4 4l8 9 8-9M12 13v7" stroke="#C9A227" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      yield
+    </a>
+    <div class="nav-links">
+      <a href="#case">The case</a><a href="#work">The work</a><a href="#all">Everything</a>
+      <a href="#trust">Trust</a><a href="#purpose">Purpose</a>
+    </div>
+    <a class="btn sm" onclick="soon()">Get the app</a>
+  </div>
+</nav>
+
+<header>
+  <div class="halo"></div>
+  <div class="wrap">
+    <div class="eyebrow rv"><i></i><span class="lab">Yield · the money layer on the cards you already carry</span></div>
+    <h1 class="rv" style="transition-delay:.05s">Yield fights for your money.</h1>
+    <div class="hero-under">
+      <div class="rv" style="transition-delay:.1s">
+        <p class="lede">Your credits expire quietly. Your bills climb without a notice. The price of what you just bought falls a week later, inside a window nobody mentions. <b>Yield watches all of it, and hands you the move while it still pays.</b></p>
+        <div class="flexrow mt32">
+          <a class="btn" onclick="soon()">Get the app</a>
+          <a class="btn ghost" href="#work">Read the case</a>
+        </div>
+      </div>
+      <div class="hero-ledger rv" style="transition-delay:.16s">
+        <div class="lr"><span class="lab">Credits still in play</span><span class="mv md" data-count="1240" data-pre="$">$0</span></div>
+        <div class="lr"><span class="lab">Refund windows open</span><span class="mv md g" data-count="3">0</span></div>
+        <div class="lr"><span class="lab">Bills that crept</span><span class="mv md r" data-count="2">0</span></div>
+        <div class="lab sm mt16">Illustrative figures from a simulated account</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ THE CASE ══ -->
+<section class="sec sec-gold" id="case">
+  <div class="wrap">
+    <div class="case-grid">
+      <h2 class="rv">The money leaves quietly. That is the design.</h2>
+      <div class="case-body rv" style="transition-delay:.08s">
+        <p class="lead">A premium card is a stack of obligations dressed as perks. Fourteen credits, six deadlines, four portals, each with its own reset rule. Nobody sends a reminder, because an unused credit is margin that never had to be paid out.</p>
+        <p>The same silence runs through the rest of it. Your internet bill steps up nineteen dollars at renewal, inside a line item you stopped reading eleven months ago. The item you bought on Tuesday is a quarter cheaper on Sunday, and the store will refund the difference if you ask inside its window. You will not notice. You are not supposed to.</p>
+        <p>None of this is carelessness. Every one of these systems is working exactly as intended, and the friction is the product. Yield is the party on your side of that arrangement.</p>
+      </div>
+    </div>
+
+    <div class="mt48"></div>
+    <div class="leak-list" data-stagger="300">
+      <div><div class="w">The hotel credit that expired in December. <b>Nobody sent a reminder.</b></div><div class="mv md r">$300</div></div>
+      <div><div class="w">The internet bill that climbed at renewal. <b>No announcement, no email.</b></div><div class="mv md r">$240</div></div>
+      <div><div class="w">The price that fell nine days after you bought it. <b>The window was still open.</b></div><div class="mv md r">$71</div></div>
+      <div><div class="w">The streaming bill one of your cards already covers. <b>Charged to the wrong one.</b></div><div class="mv md r">$84</div></div>
+      <div><div class="w">Groceries on the 1x card while the 4x sat in your wallet. <b>Every single week.</b></div><div class="mv md r">$188</div></div>
+    </div>
+    <div class="between rv" style="padding-top:26px">
+      <span class="lab">One year, one household, nothing unusual</span>
+      <span class="mv xl r" data-count="883" data-pre="$" data-delay="1500">$0</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY ══ -->
+<section class="sec sec-hair">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">Why it works</span>
+      <h2>Nobody on the other side is being careless.</h2>
+    </div>
+    <div class="why">
+      <div class="rv"><div class="n">01</div><h4>Your issuer will not remind you</h4>
+        <p>A credit that expires unused is margin that never had to be paid out. There is no department whose job is to make sure you spend it. There is a department whose job is to make sure you keep paying the fee.</p></div>
+      <div class="rv" style="transition-delay:.08s"><div class="n">02</div><h4>The refund window is quiet on purpose</h4>
+        <p>Most large retailers will refund a price difference inside a set window. Almost nobody asks, because almost nobody is still watching the price of something they already own.</p></div>
+      <div class="rv" style="transition-delay:.16s"><div class="n">03</div><h4>Your bills rise on a schedule</h4>
+        <p>Introductory rates end. Renewal premiums step up. The increase arrives inside a line you stopped reading, and it compounds every year you do not challenge it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THE WORK · sticky instrument ══ -->
+<section class="sec sec-gold" id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">The work</span>
+      <h2>Five fights, one instrument.</h2>
+      <p>Each one reads your own data. Each ends with a move you make, and a result Yield counts only once the money actually lands.</p>
+    </div>
+
+    <div class="scrolly">
+      <div>
+        <div class="plate" data-plate="switchboard">
+          <div class="pn">01 · Switchboard</div>
+          <h3>Bills that could ride a benefit you already have.</h3>
+          <p>You are paying full price for something one of your cards already covers. Yield finds those bills and shows what moving is worth, honestly, including the rewards you give up and the promotions you lose.</p>
+          <p>You make the change at the merchant. Yield watches your statement and confirms the credit only when it posts and matches the charge.</p>
+          <div class="note">Nothing counted before it posts. <b>A record, not a promise.</b></div>
+        </div>
+
+        <div class="plate" data-plate="pricedrop">
+          <div class="pn">02 · Price Drop Refunds</div>
+          <h3>You bought it. The price fell. The window is still open.</h3>
+          <p>Most stores will refund the difference if you ask inside their window. The window is short, and it starts either the day you buy or the day it arrives.</p>
+          <p>Forward the order email. Yield holds the exact item, watches the price, and tells you the day it drops while you can still act. You make the ask. Yield never files anything as you.</p>
+          <div class="note">Exact items, not guesses. <b>Name, size and store.</b></div>
+        </div>
+
+        <div class="plate" data-plate="watchdog">
+          <div class="pn">03 · Watchdog</div>
+          <h3>Quiet until there is a deal.</h3>
+          <p>Paste a product link and Yield tracks that one item. Or forward your order emails, and Watchdog locks on to the things you actually buy again, by name, size and store.</p>
+          <p>It stays silent for weeks at a time. When a price moves in your favour on something you already buy, you hear about it, with the evidence behind the number.</p>
+          <div class="note">Read from public pages and your own receipts. <b>Never your inbox, never your location.</b></div>
+        </div>
+
+        <div class="plate" data-plate="billcreep">
+          <div class="pn">04 · Bill Creep</div>
+          <h3>Your bill went up and nobody told you.</h3>
+          <p>Insurance renewals, internet and cable, home security monitoring. These climb on a schedule, and the increase never arrives as an announcement.</p>
+          <p>Yield watches your own recurring bills and speaks only when one creeps, with what you paid before, what you pay now, and what the going rate looks like so you know what to ask for.</p>
+          <div class="note">Creep in your own bills. <b>Nothing generic, nothing borrowed.</b></div>
+        </div>
+
+        <div class="plate" data-plate="pointmax">
+          <div class="pn">05 · Point Max</div>
+          <h3>Every purchase that sat on the wrong card.</h3>
+          <p>Yield reads your last month end to end and finds the spend that earned one point where it could have earned four. It names the purchase, the card you used, the card you should have used, and what the gap cost.</p>
+          <p>When the month is clean, it tells you that instead of inventing a miss.</p>
+          <div class="note">"Every purchase already sat on your best card." <b>Also a valid result.</b></div>
+        </div>
+      </div>
+
+      <div class="scrolly-rail">
+        <div class="demo">
+          <div class="device"><div class="screen"><div class="notch"></div>
+            <div class="sbar"><span>9:41</span><span>· · ·</span></div>
+            <div class="scr" id="rail" data-demo="switchboard"></div>
+          </div></div>
+          <div class="demo-cap"><div class="step"></div><div class="ticks"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EVERYTHING ══ -->
+<section class="sec sec-gold" id="all">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">Everything else</span>
+      <h2>The rest of what ships today.</h2>
+      <p>Not a roadmap. Every one of these is a surface in the app right now.</p>
+    </div>
+
+    <div class="idx-group rv">
+      <div class="idx-l">Credit Manager</div>
+      <div class="idx-row"><div class="n">The reading</div><div class="d">What the bureaus will see, and the six mechanics that set it. Position is stated, never graded.</div></div>
+      <div class="idx-row"><div class="n">Payment plans</div><div class="d">One amount, split across your revolving cards and timed to each statement close. The payment stays in your hands.</div></div>
+      <div class="idx-row"><div class="n">AZEO</div><div class="d">Where your portfolio sits against all zero except one, and whether getting there is feasible this cycle.</div></div>
+      <div class="idx-row"><div class="n">Limit increases</div><div class="d">Which issuers you are eligible with, and when their request windows open.</div></div>
+      <div class="idx-row"><div class="n">Credit Assurance</div><div class="d">Watches whether your issuer reported a payment that met what each statement required, and keeps the proof row.</div></div>
+    </div>
+
+    <div class="idx-group rv">
+      <div class="idx-l">Benefits</div>
+      <div class="idx-row"><div class="n">Benefit register</div><div class="d">Every credit on every card with its own clock. Reminders at fourteen, seven, three and one day.</div></div>
+      <div class="idx-row"><div class="n">Expiring sprint</div><div class="d">The credits that close this month, in the order they die.</div></div>
+      <div class="idx-row"><div class="n">Offer Radar</div><div class="d">Targeted offers across the issuers you carry, deduped and ranked by what they are worth to you.</div></div>
+      <div class="idx-row"><div class="n">Retention brief</div><div class="d">Your own numbers, gathered before the annual fee call. You make the call.</div></div>
+      <div class="idx-row"><div class="n">Card ROI</div><div class="d">Fees in against what actually came back. Verified value only, never projections.</div></div>
+      <div class="idx-row"><div class="n">Which card</div><div class="d">The instant answer, from your own wallet, before you pay.</div></div>
+    </div>
+
+    <div class="idx-group rv">
+      <div class="idx-l">Foundation</div>
+      <div class="idx-row"><div class="n">Receipt forwarding</div><div class="d">A private forwarding address, off until you turn it on. It is what makes the watch exact.</div></div>
+      <div class="idx-row"><div class="n">Trust Vault</div><div class="d">Every automated read on the record. If Yield read it, it is written here.</div></div>
+      <div class="idx-row"><div class="n">Supported cards</div><div class="d">Eighteen cards across six issuers, each benefit matched to the catalog.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ A DAY ══ -->
+<section class="sec sec-hair">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">A day with it on</span>
+      <h2>Most days, it says nothing.</h2>
+      <p>This is a busy one. Six notices across sixteen hours, and one of them is the sound of nothing happening.</p>
+    </div>
+    <div class="day" data-stagger="260">
+      <div style="display:contents"><div class="day-time">7:04</div><div class="day-item"><h4>Point Max finished reading July</h4><p>Fourteen purchases sat on the wrong card. The gap was $41.20 in points.</p></div></div>
+      <div style="display:contents"><div class="day-time">9:12</div><div class="day-item g"><h4>CeraVe fell $4.82 at Target</h4><p>Below what you usually pay. Yield had the exact item from a receipt you forwarded in June.</p></div></div>
+      <div style="display:contents"><div class="day-time">1:30</div><div class="day-item q"><h4>Nothing</h4><p>Twenty two price checks ran. None of them were worth interrupting you for.</p></div></div>
+      <div style="display:contents"><div class="day-time">4:48</div><div class="day-item"><h4>Comcast crept $19.99</h4><p>Two bills at the new rate. Typical urban mid tier is $74. You are at $89.99.</p></div></div>
+      <div style="display:contents"><div class="day-time">6:15</div><div class="day-item"><h4>Statement closes in three days</h4><p>Sapphire Reserve reports on Aug 21. Bureaus see the statement, not what you owe today.</p></div></div>
+      <div style="display:contents"><div class="day-time">9:00</div><div class="day-item g"><h4>The Disney credit posted</h4><p>$7.00, matched to the charge and reconciled. Counted once, and only once.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST ══ -->
+<section class="sec sec-gold" id="trust">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">Trust</span>
+      <h2>The log is the contract.</h2>
+      <p>Yield asks for a lot of visibility into your money. Here is exactly what that buys, and exactly where it stops.</p>
+    </div>
+    <div class="grid-2">
+      <div class="tile rv">
+        <span class="lab gold">What Yield reads</span>
+        <div class="mt24 stack g16">
+          <div class="row"><div class="mono-chip sm icon">◈</div><div class="grow"><div class="t">Card transactions</div><div class="s">To match benefits and verify that credits actually posted</div></div></div>
+          <div class="rule"></div>
+          <div class="row"><div class="mono-chip sm icon">◧</div><div class="grow"><div class="t">Balances and limits</div><div class="s">For statement closes and reporting dates</div></div></div>
+          <div class="rule"></div>
+          <div class="row"><div class="mono-chip sm icon">✉</div><div class="grow"><div class="t">Receipts you forward</div><div class="s">Only ever the ones you send. Off until you turn it on.</div></div></div>
+        </div>
+      </div>
+      <div class="tile gold rv" style="transition-delay:.08s">
+        <span class="lab gold">Where it stops</span>
+        <div class="mt24 stack g16">
+          <div class="row"><div class="grow"><div class="t">Yield never sees your login</div><div class="s">Plaid carries the link. Yield holds no credentials.</div></div></div>
+          <div class="rule gold"></div>
+          <div class="row"><div class="grow"><div class="t">Yield cannot move money</div><div class="s">The connection is read only. Every payment, call and claim is made by you.</div></div></div>
+          <div class="rule gold"></div>
+          <div class="row"><div class="grow"><div class="t">Your data is not for sale</div><div class="s">Not to advertisers, not to brokers.</div></div></div>
+          <div class="rule gold"></div>
+          <div class="row"><div class="grow"><div class="t">Delete it in the app</div><div class="s">Settings, then delete my account. It happens during the request and you get a reference number.</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="tile rv mt24" style="border-color:var(--hair-str)">
+      <div class="between">
+        <div style="max-width:62ch">
+          <span class="lab gold">The decisive line</span>
+          <p class="sub mt8" style="font-size:17px"><b>A claim earns its seal when the charge is seen, the credit posts, and the two are matched once.</b> Pending money never lands in the verified column. Estimates stay labelled as estimates.</p>
+        </div>
+        <div class="pill g nodot">Verified value, counted once</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CARDS ══ -->
+<section class="sec sec-hair" id="cards">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab gold">Supported cards</span>
+      <h2>Eighteen cards. Six issuers.</h2>
+      <p>Every benefit matched to the catalog, with its own reset rule and expiry window.</p>
+    </div>
+    <div class="cardgrid rv">
+      <div class="cardrow"><div><div class="cn">Amex Platinum</div><div class="ci">American Express</div></div><div class="mv sm">$895</div></div>
+      <div class="cardrow"><div><div class="cn">Sapphire Reserve</div><div class="ci">Chase</div></div><div class="mv sm">$795</div></div>
+      <div class="cardrow"><div><div class="cn">Delta SkyMiles Reserve</div><div class="ci">American Express</div></div><div class="mv sm">$650</div></div>
+      <div class="cardrow"><div><div class="cn">Venture X</div><div class="ci">Capital One</div></div><div class="mv sm">$395</div></div>
+      <div class="cardrow"><div><div class="cn">Amex Gold</div><div class="ci">American Express</div></div><div class="mv sm">$325</div></div>
+      <div class="cardrow"><div><div class="cn">Amex Green</div><div class="ci">American Express</div></div><div class="mv sm">$150</div></div>
+      <div class="cardrow"><div><div class="cn">United Explorer</div><div class="ci">Chase</div></div><div class="mv sm">$150</div></div>
+      <div class="cardrow"><div><div class="cn">Sapphire Preferred</div><div class="ci">Chase</div></div><div class="mv sm">$95</div></div>
+      <div class="cardrow"><div><div class="cn">Blue Cash Preferred</div><div class="ci">American Express</div></div><div class="mv sm">$95</div></div>
+      <div class="cardrow"><div><div class="cn">Venture</div><div class="ci">Capital One</div></div><div class="mv sm">$95</div></div>
+      <div class="cardrow"><div><div class="cn">Strata Premier</div><div class="ci">Citi</div></div><div class="mv sm">$95</div></div>
+      <div class="cardrow"><div><div class="cn">Premium Rewards</div><div class="ci">Bank of America</div></div><div class="mv sm">$95</div></div>
+      <div class="cardrow"><div><div class="cn">Autograph Journey</div><div class="ci">Wells Fargo</div></div><div class="mv sm">$95</div></div>
+      <div class="cardrow"><div><div class="cn">Freedom Unlimited</div><div class="ci">Chase</div></div><div class="mv sm dim">No fee</div></div>
+      <div class="cardrow"><div><div class="cn">SavorOne</div><div class="ci">Capital One</div></div><div class="mv sm dim">No fee</div></div>
+      <div class="cardrow"><div><div class="cn">Double Cash</div><div class="ci">Citi</div></div><div class="mv sm dim">No fee</div></div>
+      <div class="cardrow"><div><div class="cn">Customized Cash</div><div class="ci">Bank of America</div></div><div class="mv sm dim">No fee</div></div>
+      <div class="cardrow"><div><div class="cn">Active Cash</div><div class="ci">Wells Fargo</div></div><div class="mv sm dim">No fee</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="sec sec-hair">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="lab gold">Questions</span><h2>The ones worth answering.</h2></div>
+    <div class="rv">
+      <details><summary>Does Yield actually do things for me, or just tell me?<span class="plus">+</span></summary>
+        <div class="ans">It prepares and stops. Yield reads your own data, works out the move, and puts it in front of you ready to go. Scripts get copied, orders get placed, calls get made, refunds get asked for, by you. Nothing is filed or purchased in your name. That is a deliberate line, not a missing feature.</div></details>
+      <details><summary>What can Yield see?<span class="plus">+</span></summary>
+        <div class="ans">Card transactions, balances and limits through a read only Plaid connection, plus any receipt emails you choose to forward. Not your checking or savings accounts, not your card numbers, not your login. Receipt forwarding is off until you switch it on, and only reaches emails you send yourself.</div></details>
+      <details><summary>Will this improve my credit score?<span class="plus">+</span></summary>
+        <div class="ans">Yield does not promise score outcomes and will not claim any. What it does is show you what the bureaus will see before they see it: your utilization, which cards report when, and what a payment before a close would change. Position is stated, never graded, and payments always stay in your hands.</div></details>
+      <details><summary>How does it know a price actually dropped?<span class="plus">+</span></summary>
+        <div class="ans">It holds the exact item from your own receipt, by name, size and store, and reads prices from public product pages. When it shows you a drop it shows the evidence behind the number, including what you paid and what the price has done since.</div></details>
+      <details><summary>What counts as money Yield got back?<span class="plus">+</span></summary>
+        <div class="ans">Only a credit that posted to your statement and matched a charge, counted once. Expected value, modeled value and anything still in flight stay in their own columns, clearly labelled. Yield will not show a number it cannot stand behind.</div></details>
+      <details><summary>How often will it interrupt me?<span class="plus">+</span></summary>
+        <div class="ans">Rarely. There is no daily digest and no streak. You hear from Yield when a credit is about to expire, when a tracked price drops inside a window, when one of your own bills creeps, and when a credit finally posts.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PURPOSE ══ -->
+<section class="sec purpose sec-gold" id="purpose">
+  <div class="wrap">
+    <h2 class="rv">Yield fights for your money.</h2>
+    <p class="rv" style="transition-delay:.08s">Every party in this arrangement has someone working for it. The issuer has a department. The merchant has a policy. The insurer has a renewal schedule. You had nobody. Yield is the one on your side of the table, and it counts a win only when the money actually lands.</p>
+    <div class="flexrow mt32 rv" style="justify-content:center;transition-delay:.14s">
+      <a class="btn" onclick="soon()">Get the app</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="mark" style="font-size:24px">
+          <svg class="y" viewBox="0 0 24 24" fill="none"><path d="M4 4l8 9 8-9M12 13v7" stroke="#C9A227" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          yield
+        </div>
+        <p class="sub mt16" style="font-size:14.5px;max-width:32ch;color:var(--muted)">The money layer on the cards you already carry.</p>
+        <div class="badges">
+          <div class="badge" onclick="soon()">
+            <svg viewBox="0 0 24 24"><path d="M17.05 12.5c0-2.2 1.8-3.3 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8s-1.8-.8-2.9-.8c-1.5 0-2.9.9-3.6 2.2-1.6 2.7-.4 6.7 1.1 8.9.7 1.1 1.6 2.3 2.7 2.2 1.1 0 1.5-.7 2.8-.7s1.7.7 2.9.7 2-1.1 2.7-2.1c.8-1.2 1.2-2.4 1.2-2.5 0 0-2.2-.9-2.2-3.7zM14.8 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.6-.9 2.6 1 .1 2-.5 2.6-1.2z"/></svg>
+            <span><span class="bt">Download on the</span><span class="bn">App Store</span></span>
+          </div>
+          <div class="badge" onclick="soon()">
+            <svg viewBox="0 0 24 24"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.6 2.3zM16.4 15.4l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1 .6 1 1.6 0 2.2l-3.8 2zM15.5 16.3l-3.2-3.2-9.3 9.3c.3.4.9.4 1.5.1l11-6.2zM15.5 7.7l-11-6.2c-.6-.4-1.2-.3-1.5.1l9.3 9.3 3.2-3.2z"/></svg>
+            <span><span class="bt">Get it on</span><span class="bn">Google Play</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="f-col"><h5>The work</h5><a href="#work">Switchboard</a><a href="#work">Price Drop Refunds</a><a href="#work">Watchdog</a><a href="#work">Bill Creep</a><a href="#work">Point Max</a></div>
+      <div class="f-col"><h5>More</h5><a href="#all">Credit Manager</a><a href="#all">Benefit register</a><a href="#all">Offer Radar</a><a href="#all">Trust Vault</a><a href="#cards">Supported cards</a></div>
+      <div class="f-col"><h5>Company</h5><a href="#purpose">Purpose</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="mailto:support@getyield.io">Support</a></div>
+    </div>
+    <div class="f-legal">
+      Yield is not a financial advisor and does not provide financial advice. Yield is not affiliated with, endorsed by, or sponsored by any card issuer. Card names, logos and benefit programs are trademarks of their respective owners. Product screens and animated demonstrations on this page are simulated and illustrate how Yield presents information. They are not a guarantee of any particular outcome, and figures shown are illustrative. Benefit terms, prices, merchant refund policies and issuer offers change without notice. Always verify details with your issuer or merchant.
+      <br><br>© 2026 Yield.
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="soon" onclick="if(event.target.id==='soon')closeSoon()">
+  <div class="modal-in tile gold">
+    <span class="lab gold">Not yet</span>
+    <h3>Coming to your phone.</h3>
+    <p>Yield is in build. The App Store and Google Play listings are not live yet. Send a note and you will hear from us the day they are.</p>
+    <a class="btn" href="mailto:ben@getyield.io?subject=Yield%20early%20access">Email us</a>
+  </div>
+</div>
+
+<script src="yield-demos.js"></script>
+<script>
+/* The sticky instrument follows the essay. One device, five workflows,
+   swapped as each plate takes the reading position. */
+(function(){
+  const rail = document.getElementById('rail');
+  const plates = [...document.querySelectorAll('[data-plate]')];
+  if(!rail || !plates.length) return;
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting) return;
+      plates.forEach(p=>p.classList.toggle('active', p===e.target));
+      rail.__setDemo && rail.__setDemo(e.target.dataset.plate);
+    });
+  }, {rootMargin:'-45% 0px -45% 0px', threshold:0});
+  plates.forEach(p=>io.observe(p));
+})();
+</script>
+</body>
+</html>
