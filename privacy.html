@@ -30,7 +30,7 @@
     <a href="/" class="back">← Back to home</a>
     <h1>Privacy Policy</h1>
     <div class="meta">
-      <span class="lab">Last updated · August 2026</span>
+      <span class="lab">Last updated · October 2026</span>
       <span class="lab">12 sections</span>
     </div>
   </div>
@@ -70,11 +70,11 @@
 
       <h3>Financial data, through Plaid</h3>
       <ul>
-        <li>Credit card account names and identifiers</li>
-        <li>Transaction history, including merchant names, dates and amounts</li>
-        <li>Balances, credit limits and statement timing, used for reporting and close date features</li>
-        <li>We do <b>not</b> receive your card number, CVV, PIN or bank login credentials</li>
-        <li>We do <b>not</b> access checking, savings or investment accounts</li>
+        <li>You connect credit card accounts only. When you link through Plaid, only credit cards are offered.</li>
+        <li>For each card you connect, we receive and store its current balance, credit limit, last statement balance and date, minimum payment, payment due date, last payment, interest rates and the balance each rate applies to, interest charged, and whether a payment is overdue.</li>
+        <li>We receive and store the card's transactions: the date, the amount, the merchant as your card issuer names it, its category, and whether it is a charge or a refund.</li>
+        <li>We store your card issuer's name and the identifiers Plaid gives your connection and accounts.</li>
+        <li>We do not receive your card number, CVV, PIN or bank login. You sign in to your bank inside Plaid, never inside Yield.</li>
       </ul>
 
       <h3>Receipt data, only if you turn on receipt forwarding</h3>
@@ -89,9 +89,14 @@
       <h3>Product and usage data</h3>
       <ul>
         <li>Benefit tracking records, meaning which benefits you have used and which credits have posted</li>
-        <li>Products and prices you ask Yield to watch, and products identified from receipts you forward</li>
+        <li>Products identified from receipts you forward</li>
         <li>App interaction data, meaning screens viewed and features used</li>
         <li>Technical error logs</li>
+        <li>If you ask Yield to check internet or phone plans at your address: the address, stored encrypted, and its map coordinates and census block, which are not encrypted, so providers at that location can be looked up.</li>
+        <li>Bills Yield finds in your transactions, and what you tell us about them, such as a promotion's end date or that a charge is not a bill.</li>
+        <li>Payment planning details you give us: your paydays, what you plan to pay, and whether autopay is on.</li>
+        <li>Products and prices you ask Yield to watch.</li>
+        <li>Your time zone, so reminders arrive at a sensible hour, and your notification choices.</li>
       </ul>
     </section>
 
@@ -130,7 +135,8 @@
       <h3>Matching your transactions</h3>
       <ul>
         <li>We use AI to work out which merchant a transaction belongs to and whether it matches a benefit</li>
-        <li>What is sent is the merchant name and typical amounts. Not your name, your account, or your card number.</li>
+        <li>What is sent is the merchant name, typical amounts, and the name and issuer of your card product. Not your name, your account number or your card number.</li>
+        <li>To recognise a recurring bill or purchase, we send the merchant, the recurring amount and how often it recurs.</li>
         <li>Classifications are cached, so the same merchant is only classified once</li>
       </ul>
 
@@ -154,11 +160,14 @@
       </ul>
       <h3>Our processors</h3>
       <ul>
-        <li><b>Plaid</b> to connect your accounts securely</li>
+        <li><b>Plaid:</b> to connect your credit card accounts securely.</li>
         <li><b>Supabase</b> to store your data, encrypted at rest</li>
         <li><b>Postmark</b> to receive the receipt emails you forward, if you turn receipt forwarding on</li>
         <li><b>Anthropic</b> to classify transaction merchants, and to read the receipt emails you forward, as described in section 4</li>
         <li><b>Expo</b> to deliver push notifications</li>
+        <li><b>SerpAPI, Keepa and Bright Data:</b> to look up products you track or forward, using the product's name, identifier or link.</li>
+        <li><b>The US Census Bureau:</b> to find the map location of an address you ask Yield to check.</li>
+        <li><b>broadbandmap.com:</b> to list the internet providers at that location, using its coordinates.</li>
       </ul>
       <p>We may disclose data where required by law, or where necessary to protect the rights, safety or property of Yield or another person.</p>
     </section>
